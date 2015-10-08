@@ -35,10 +35,12 @@ namespace Vuforia
 
         private void CreateLineMaterial() 
         {
-            mLineMaterial = new Material("Shader \"Lines/Colored Blended\" {" +
+            /*mLineMaterial = new Material("Shader \"Lines/Colored Blended\" {" +
                 "SubShader {" +
                     "Pass { Color (" + LineColor.r + "," + LineColor.g + "," + LineColor.b + "," + LineColor.a + ") }" + 
-                "} }" );
+                "} }" );*/
+            mLineMaterial = new Material(Shader.Find("Lines/Colored Blended"));
+            mLineMaterial.SetColor("Line Color", LineColor);
             mLineMaterial.hideFlags = HideFlags.HideAndDontSave;
             mLineMaterial.shader.hideFlags = HideFlags.HideAndDontSave; 
         }

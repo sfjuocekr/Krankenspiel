@@ -3,25 +3,76 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody _rigidbody;
+    public float _JumpHeight = 1.5f;
 
-	// Use this for initialization
+    private bool JUMPING = false;
+    private bool GROUNDED = false;
+    private bool FALLING = false;
+
+    Rigidbody _RigidBody;
+    //CapsuleCollider _CapsuleCollider;
+
 	void Start ()
     {
-        _rigidbody = gameObject.GetComponent<Rigidbody>();
-	}
+        _RigidBody = GetComponent<Rigidbody>();
+        //_CapsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+    }
 	
-	// Update is called once per frame
-	void Update ()
+    void OnCollisionStay (Collision _Collider)
     {
-	    
-	}
+        if (_Collider.gameObject.name == "Floor" && GROUNDED)
+        {
+            JUMPING = false;
+        }
+    }
+
+    void OnCollisionEnter(Collision _Collider)
+    {
+        if (_Collider.gameObject.name == "Floor")
+        {
+            GROUNDED = true;
+        }
+    }
+    void OnCollisionExit(Collision _Collider)
+    {
+        if (_Collider.gameObject.name == "Floor")
+        {
+            GROUNDED = false;
+        }
+    }
+
+    void Update ()
+    {
+        if (Input.GetButtonDown("Jump") && !JUMPING && GROUNDED)
+        {
+            JUMPING = true;
+            GROUNDED = false;
+
+            _RigidBody.velocity += Vector3.up * 100.0f * _JumpHeight;
+        }
+
+        if (GROUNDED && Input.GetAxis("Horizontal") != 0)
+            _RigidBody.velocity = new Vector3(Input.GetAxis("Horizontal") * 100.0f, _RigidBody.velocity.y, 0.0f);
+        else if ((JUMPING || FALLING) && Input.GetAxis("Horizontal") != 0 && _RigidBody.velocity.x != 0)
+            _RigidBody.velocity = new Vector3(_RigidBody.velocity.x * 0.99f, _RigidBody.velocity.y, 0.0f);
+        else if ((JUMPING || FALLING) && Input.GetAxis("Horizontal") == 0 && _RigidBody.velocity.x != 0)
+            _RigidBody.velocity = new Vector3(_RigidBody.velocity.x * 0.9f, _RigidBody.velocity.y, 0.0f);
+        else if (Input.GetAxis("Horizontal") == 0 && _RigidBody.velocity.x != 0)
+            _RigidBody.velocity = new Vector3(_RigidBody.velocity.x * 0.5f, _RigidBody.velocity.y, 0.0f);
+        
+
+        //if (_RigidBody.velocity.x > 100)
+          //  _RigidBody.velocity = new Vector3(100.0f, _RigidBody.velocity.y, _RigidBody.velocity.z)
+    }
 
     void FixedUpdate ()
     {
-        Vector3 _position = transform.position;
+        if (_RigidBody.velocity.y < 0)
+            FALLING = true;
+        else
+            FALLING = false;
 
-        _position.z = 0;
-        transform.position = _position;
+        if (!GROUNDED)
+            _RigidBody.velocity -= Vector3.down * Physics.gravity.y;
     }
 }
