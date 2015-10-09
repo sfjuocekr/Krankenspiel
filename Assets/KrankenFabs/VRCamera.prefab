@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170658}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef0e860cccf810e4c8027b1dc8994711, type: 3}
   m_Name: 
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4114ca95ba12f394a8ad43abfc86745c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VuforiaLicenseKey: 
+  VuforiaLicenseKey: AUNagf//////AAAAAwPseQasGEbSr2/jml/EXD0//LvC2/6PJ1LwYJUjGNknKimZFnM/AnWDbQ5bTSQCtPIFlEJspt6jED5oi6c0lGf8E4mR2fangRF2n/aYxry5/O6W7qvIHVE3uggVMQAO8HFUCn6g8Oo5PA3EvOHxN1U5yXLHr97WIyB1tE+4Gsw3hXteto3r+wvOriHbjzffiunQccPL+xWNGGGpsSUHd+zOuw9Y09imkFVjYJrKk/+7HR75rMSNxXQvudjR/y8b1+uzd9Y5WYRb46/smxtAFo9UoApVoV6XLqAbFFy/wnJQHaHFW1Q6pBoM2ATn66KH8LamCPQIOHAwyDtlVe1fFuHhWx1m6ILIREAuNpF7AZqv
   mCameraOffset: 0
   mSkewFrustum: 1
   CameraDeviceModeSetting: -2
