@@ -17,7 +17,9 @@ public class MoverioCameraController : MonoBehaviour {
 		}
 	}
 
-	private Camera LeftEyeCam, RightEyeCam, Cam2D;
+	public Camera LeftEyeCam, RightEyeCam, Cam2D;
+
+	public float PupillaryDistance = 0.05f;
 
 	MoverioDisplayType _displayState;
 
@@ -26,31 +28,28 @@ public class MoverioCameraController : MonoBehaviour {
 		_instance = this;
 	}
 
-    void Start()
-    {
-        if (Vuforia.VuforiaBehaviour.Instance.SecondaryCamera != null)
-            SetCurrentDisplayType(MoverioDisplayType.Display3D);
-        else
-            SetCurrentDisplayType(MoverioDisplayType.Display2D);
-    }
+	void Start()
+	{
+		SetPupillaryDistance(PupillaryDistance);
+	}
 
 	public void SetPupillaryDistance(float pDist)
 	{
-        Debug.Log("YOLO DISTANCE: " + pDist.ToString());
+		PupillaryDistance = pDist;
 
-		LeftEyeCam.transform.localPosition = new Vector3(-pDist, 0.0f, 0.0f);
-        RightEyeCam.transform.localPosition = new Vector3(pDist, 0.0f, 0.0f);
+		LeftEyeCam.transform.localPosition = new Vector3(-PupillaryDistance, 0.0f, 0.0f);
+		RightEyeCam.transform.localPosition = new Vector3(PupillaryDistance, 0.0f, 0.0f);
 	}
 
 	void OnEnable()
 	{
 		MoverioController.OnMoverioStateChange += HandleOnMoverioStateChange;
-    }
+	}
 
 	void OnDisable()
 	{
 		MoverioController.OnMoverioStateChange -= HandleOnMoverioStateChange;
-    }
+	}
 
 	void HandleOnMoverioStateChange (MoverioEventType type)
 	{
@@ -77,39 +76,16 @@ public class MoverioCameraController : MonoBehaviour {
 
 		switch(_displayState)
 		{
-		    case MoverioDisplayType.Display2D:
-                Cam2D = Vuforia.VuforiaBehaviour.Instance.PrimaryCamera;
-
-                Cam2D.enabled = true;
-                
-                LeftEyeCam = RightEyeCam = null;
-
-                break;
-        
-		    case MoverioDisplayType.Display3D:
-                if (Vuforia.VuforiaBehaviour.Instance.IsStereoRendering)
-                {
-                    LeftEyeCam = Vuforia.VuforiaBehaviour.Instance.PrimaryCamera;
-                    RightEyeCam = Vuforia.VuforiaBehaviour.Instance.SecondaryCamera;
-
-                    LeftEyeCam.enabled = RightEyeCam.enabled = true;
-
-                    Cam2D = null;
-
-                    SetPupillaryDistance(Vuforia.VuforiaBehaviour.Instance.CameraOffset);
-                }
-                else
-                {
-                    Cam2D = Vuforia.VuforiaBehaviour.Instance.PrimaryCamera;
-
-                    Cam2D.enabled = true;
-
-                    LeftEyeCam = RightEyeCam = null;
-                }
-
-                break;
+		case MoverioDisplayType.Display2D:
+			LeftEyeCam.enabled = RightEyeCam.enabled = false;
+			Cam2D.enabled = true;
+			break;
+		case MoverioDisplayType.Display3D:
+			LeftEyeCam.enabled = RightEyeCam.enabled = true;
+			Cam2D.enabled = false;
+			break;
 		}
-    }
+	}
 
 
 }

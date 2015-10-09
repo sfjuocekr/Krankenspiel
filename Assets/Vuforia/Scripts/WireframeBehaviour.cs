@@ -42,7 +42,7 @@ namespace Vuforia
             mLineMaterial = new Material(Shader.Find("Lines/Colored Blended"));
             mLineMaterial.SetColor("Line Color", LineColor);
             mLineMaterial.hideFlags = HideFlags.HideAndDontSave;
-            mLineMaterial.shader.hideFlags = HideFlags.HideAndDontSave; 
+            mLineMaterial.shader.hideFlags = HideFlags.HideAndDontSave;
         }
 
         #endregion // PRIVATE_METHODS

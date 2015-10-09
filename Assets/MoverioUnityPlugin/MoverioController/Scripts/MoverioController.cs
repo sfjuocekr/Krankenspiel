@@ -3,122 +3,109 @@ using System.Collections;
 
 public enum MoverioEventType
 {
-    Display3DOn,
-    Display3DOff,
-    DisplayBrightnessChange,
-    MuteAudioOn,
-    MuteAudioOff,
-    MuteDisplayOn,
-    MuteDisplayOff,
-    SensorHeadTrack,
-    SensorHandController
+	Display3DOn,
+	Display3DOff,
+	DisplayBrightnessChange,
+	MuteAudioOn,
+	MuteAudioOff,
+	MuteDisplayOn,
+	MuteDisplayOff,
+	SensorHeadTrack,
+	SensorHandController
 }
 
 public enum MoverioDisplayType
 {
-    Display3D,
-    Display2D
+	Display3D,
+	Display2D
 }
 
 public enum MoverioSensorType
 {
-    SensorHeadTracking,
-    SensorHandController
+	SensorHeadTracking,
+	SensorHandController
 }
 
-public class MoverioController : MonoBehaviour
-{
+public class MoverioController : MonoBehaviour {
+	
+	public delegate void MoverioEvent(MoverioEventType type);
+	public static event MoverioEvent OnMoverioStateChange;
 
-    public delegate void MoverioEvent(MoverioEventType type);
-    public static event MoverioEvent OnMoverioStateChange;
+	public int InitialScreenBrightness = 20;
 
-    public int InitialScreenBrightness = 20;
+	public MoverioDisplayType InitialDisplayMode = MoverioDisplayType.Display2D;
 
-    public MoverioDisplayType InitialDisplayMode = MoverioDisplayType.Display2D;
+	public MoverioSensorType InitialSensorMode = MoverioSensorType.SensorHeadTracking;
 
-    public MoverioSensorType InitialSensorMode = MoverioSensorType.SensorHeadTracking;
+	private AndroidJavaClass _unityPlayer;
+	private AndroidJavaObject _currentActivity;
 
-    private AndroidJavaClass _unityPlayer;
-    private AndroidJavaObject _currentActivity;
+	private static MoverioController _instance;
+	public static MoverioController Instance
+	{
+		get
+		{
+			if(_instance == null)
+			{
+				Debug.Log("Please Add MoverioController Prefab To Scene!");
+			}
+			return _instance;
+		}
+	}
 
-    private static MoverioController _instance;
-    public static MoverioController Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                Debug.Log("Please Add MoverioController Prefab To Scene!");
-            }
-            return _instance;
-        }
-    }
+	void Awake()
+	{
+		_instance = this;
+	}
 
-    void Awake()
-    {
-        _instance = this;
-    }
+#if UNITY_ANDROID && !UNITY_EDITOR
+	bool MoverioDevice = true;
+#endif
 
-    bool MoverioDevice;
-
-    void Start()
-    {
-
+	void Start () 
+	{
         CheckDeviceType();
+		SetJavaClass();
+		SetDefaultSettings();
+	}
 
-        SetJavaClass();
-
-        SetDefaultSettings();
-
-    }
-
-    bool CheckDeviceType()
-    {
+	void CheckDeviceType()
+	{
         if (SystemInfo.deviceModel.Equals("EPSON embt2"))
-        {
-
             AndroidJNI.AttachCurrentThread();
 
-            MoverioDevice = true;
-
-        }
+#if UNITY_ANDROID && !UNITY_EDITOR
         else
-        {
-
             MoverioDevice = false;
+#endif
 
-        }
+	}
 
-        return MoverioDevice;
-    }
+	void SetDefaultSettings()
+	{
+		if(InitialDisplayMode.Equals(MoverioDisplayType.Display3D))
+		{
+			SetDisplay3D(true);
+		} else {
+			SetDisplay3D(false);
+		}
 
-    void SetDefaultSettings()
-    {
-        if (InitialDisplayMode.Equals(MoverioDisplayType.Display3D))
-        {
-            SetDisplay3D(true);
-        }
-        else
-        {
-            SetDisplay3D(false);
-        }
+		if(!InitialScreenBrightness.Equals(20))
+		{
+			string msg = "";
+			msg = SetDisplayBrightness(InitialScreenBrightness);
 
-        if (!InitialScreenBrightness.Equals(20))
-        {
-            string msg = "";
-            msg = SetDisplayBrightness(InitialScreenBrightness);
+			Debug.Log(msg);
+		}
 
-            Debug.Log(msg);
-        }
+		if(InitialSensorMode.Equals(MoverioSensorType.SensorHandController))
+		{
+			SetSensorMode(MoverioSensorType.SensorHandController);
+		}
+	}
 
-        if (InitialSensorMode.Equals(MoverioSensorType.SensorHandController))
-        {
-            SetSensorMode(MoverioSensorType.SensorHandController);
-        }
-    }
-
-    void SetJavaClass()
-    {
+	void SetJavaClass()
+	{
 #if UNITY_ANDROID && !UNITY_EDITOR
 
 		if(MoverioDevice)
@@ -132,18 +119,18 @@ public class MoverioController : MonoBehaviour
 		}
 
 #endif
-    }
+	}
 
-    /*
+	/*
 	 * 
 	 * SetSensorMode takes either MoverioSensorType.SensorHandController or MoverioSensorType.SensorHeadTracking
 	 * 
 	 * 
 	 */
 
-    public string SetSensorMode(MoverioSensorType sType)
-    {
-        string msg = "NOT SET";
+	public string SetSensorMode(MoverioSensorType sType)
+	{
+		string msg = "NOT SET";
 
 
 
@@ -163,27 +150,25 @@ public class MoverioController : MonoBehaviour
 		
 #endif
 
-        if (sType.Equals(MoverioSensorType.SensorHandController))
-        {
-            if (OnMoverioStateChange != null)
-            {
-                OnMoverioStateChange(MoverioEventType.SensorHandController);
-            }
-        }
-        else
-        {
-            if (OnMoverioStateChange != null)
-            {
-                OnMoverioStateChange(MoverioEventType.SensorHeadTrack);
-            }
-        }
+		if(sType.Equals(MoverioSensorType.SensorHandController))
+		{
+			if(OnMoverioStateChange != null)
+			{
+				OnMoverioStateChange(MoverioEventType.SensorHandController);
+			}
+		} else {
+			if(OnMoverioStateChange != null)
+			{
+				OnMoverioStateChange(MoverioEventType.SensorHeadTrack);
+			}
+		}
+		
 
+		return msg;
 
-        return msg;
+	}
 
-    }
-
-    /*
+	/*
 	 * 
 	 * SetDisplayBrightness takes an int between 0 - 20 
 	 * will automatically return an ERROR msg for out of range
@@ -191,9 +176,9 @@ public class MoverioController : MonoBehaviour
 	 */
 
 
-    public string SetDisplayBrightness(int brightness)
-    {
-        string msg = "NOT SET";
+	public string SetDisplayBrightness(int brightness)
+	{
+		string msg = "NOT SET";
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 
@@ -204,23 +189,23 @@ public class MoverioController : MonoBehaviour
 
 #endif
 
-        if (OnMoverioStateChange != null)
-        {
-            OnMoverioStateChange(MoverioEventType.DisplayBrightnessChange);
-        }
+		if(OnMoverioStateChange != null)
+		{
+			OnMoverioStateChange(MoverioEventType.DisplayBrightnessChange);
+		}
 
-        return msg;
-    }
+		return msg;
+	}
 
-    /*
+	/*
 	 * 
 	 * Gets Current Display Brightness level (an int between 0 - 20)
 	 * 
 	 */
 
-    public int GetDisplayBrightness()
-    {
-        int i = -1;
+	public int GetDisplayBrightness()
+	{
+		int i = -1;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 
@@ -230,17 +215,17 @@ public class MoverioController : MonoBehaviour
 		}
 
 #endif
-        return i;
-    }
+		return i;
+	}
 
-    /*
+	/*
 	 * 
 	 * Sets 3D Display toggle on/off
 	 * 
 	 */
 
-    public void SetDisplay3D(bool on)
-    {
+	public void SetDisplay3D(bool on)
+	{
 #if UNITY_ANDROID && !UNITY_EDITOR
 
 		if(MoverioDevice)
@@ -250,31 +235,29 @@ public class MoverioController : MonoBehaviour
 
 #endif
 
-        if (OnMoverioStateChange != null)
-        {
-            MoverioEventType eType;
+		if(OnMoverioStateChange != null)
+		{
+			MoverioEventType eType;
 
-            if (on)
-            {
-                eType = MoverioEventType.Display3DOn;
-            }
-            else
-            {
-                eType = MoverioEventType.Display3DOff;
-            }
+			if(on)
+			{
+				eType = MoverioEventType.Display3DOn;
+			} else {
+				eType = MoverioEventType.Display3DOff;
+			}
 
-            OnMoverioStateChange(eType);
-        }
-    }
+			OnMoverioStateChange(eType);
+		}
+	}
 
-    /*
+	/*
 	 * 
 	 * Sets 3D Display toggle on/off
 	 * 
 	 */
 
-    public void MuteAudio(bool mute)
-    {
+	public void MuteAudio(bool mute)
+	{
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 
@@ -285,31 +268,29 @@ public class MoverioController : MonoBehaviour
 
 #endif
 
-        if (OnMoverioStateChange != null)
-        {
-            MoverioEventType eType;
+		if(OnMoverioStateChange != null)
+		{
+			MoverioEventType eType;
+			
+			if(mute)
+			{
+				eType = MoverioEventType.MuteAudioOn;
+			} else {
+				eType = MoverioEventType.MuteAudioOff;
+			}
+			
+			OnMoverioStateChange(eType);
+		}
+	}
 
-            if (mute)
-            {
-                eType = MoverioEventType.MuteAudioOn;
-            }
-            else
-            {
-                eType = MoverioEventType.MuteAudioOff;
-            }
-
-            OnMoverioStateChange(eType);
-        }
-    }
-
-    /*
+	/*
 	 * 
 	 * Sets 3D Display toggle on/off
 	 * 
 	 */
 
-    public void MuteDisplay(bool mute)
-    {
+	public void MuteDisplay(bool mute)
+	{
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 
@@ -320,24 +301,22 @@ public class MoverioController : MonoBehaviour
 
 #endif
 
-        if (OnMoverioStateChange != null)
-        {
-            MoverioEventType eType;
-
-            if (mute)
-            {
-                eType = MoverioEventType.MuteDisplayOn;
-            }
-            else
-            {
-                eType = MoverioEventType.MuteDisplayOff;
-            }
-
-            OnMoverioStateChange(eType);
-        }
+		if(OnMoverioStateChange != null)
+		{
+			MoverioEventType eType;
+			
+			if(mute)
+			{
+				eType = MoverioEventType.MuteDisplayOn;
+			} else {
+				eType = MoverioEventType.MuteDisplayOff;
+			}
+			
+			OnMoverioStateChange(eType);
+		}
 
 
-    }
+	}
 
 
 }
