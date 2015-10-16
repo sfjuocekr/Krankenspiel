@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11407740}
   - 92: {fileID: 9288276}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: StereoCameraLeft
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +31,24 @@ GameObject:
   m_Layer: 0
   m_Name: BackgroundPlane
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &162642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 494354}
+  - 20: {fileID: 2009498}
+  - 114: {fileID: 11427142}
+  - 92: {fileID: 9208830}
+  m_Layer: 0
+  m_Name: StereoCameraRight
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,11 +83,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170658}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -3.74314979e-08, y: .973249018, z: -.229752898, w: -1.58562401e-07}
+  m_LocalPosition: {x: 800, y: 300, z: 400}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 487118}
+  - {fileID: 494354}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &441854
@@ -97,6 +116,52 @@ Transform:
   - {fileID: 441854}
   m_Father: {fileID: 401050}
   m_RootOrder: 0
+--- !u!4 &494354
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 401050}
+  m_RootOrder: 1
+--- !u!20 &2009498
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162642}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: .5
+    y: 0
+    width: .5
+    height: 1
+  near clip plane: .00999999978
+  far clip plane: 2000
+  field of view: 85
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!20 &2083924
 Camera:
   m_ObjectHideFlags: 1
@@ -111,11 +176,11 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: .5
     height: 1
   near clip plane: .00999999978
-  far clip plane: 600
-  field of view: 50
+  far clip plane: 2000
+  field of view: 85
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -162,6 +227,13 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170658}
   m_Enabled: 1
+--- !u!92 &9208830
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162642}
+  m_Enabled: 1
 --- !u!92 &9288276
 Behaviour:
   m_ObjectHideFlags: 1
@@ -197,6 +269,17 @@ MonoBehaviour:
   mKeepUDTBuildingBehaviourAlive: 0
   mKeepCloudRecoBehaviourAlive: 0
   mKeepSmartTerrainAlive: 0
+--- !u!114 &11427142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82d9a4bfbaccce4298a2b72f6a03f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11430104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,7 +297,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170658}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6eaba4e9333f9841b0629114aa5a4b7, type: 3}
   m_Name: 
@@ -283,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VuforiaLicenseKey: AaZC7TH/////AAAAA5r6XQ8Sy08dsXA2iGYip+gJpHLD2SJp+T9qWJEaD7W/zAO0V6P4nDhHflzPyuZ/NYIJnOjJebdUOScKgIRbuFLKApWC1eXOZ/6Nv/JAjKO4jbOURAUS4UxDegbXJdGWLRancB1LZLQGKTAJkdkvpdXTgEApBEY4fmQVVCC3Ob1tcUd0ljk0+rADL2JRB4IPl7l7KpK4uGf4aBZ2NCZQFPpInLooXeBjf1ZiTN9M6z0Ur4gDGVsWExIhL56C/9xYnPzgEgD1lZHHSJjB7gPpi//OcH47MycvJeEKVkZHasel3qs0KJHYrVe4Ds08sA/KuxqUAhm3wxK3qL23zHr176S01bDMx2XZslvMVLnIWZOS
   mCameraOffset: 0
-  mSkewFrustum: 1
+  mSkewFrustum: 0
   CameraDeviceModeSetting: -2
   MaxSimultaneousImageTargets: 6
   MaxSimultaneousObjectTargets: 0
@@ -295,9 +378,9 @@ MonoBehaviour:
   mCentralAnchorPoint: {fileID: 401050}
   mParentAnchorPoint: {fileID: 401050}
   mPrimaryCamera: {fileID: 2083924}
-  mSecondaryCamera: {fileID: 0}
-  mUsingHeadset: 0
-  mHeadsetID: 
+  mSecondaryCamera: {fileID: 2009498}
+  mUsingHeadset: 1
+  mHeadsetID: Moverio
   mEyewearUserCalibrationProfileId: -1
   mSynchronizePoseUpdates: 0
 --- !u!114 &11488726
