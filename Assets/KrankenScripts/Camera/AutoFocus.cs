@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Collections;
 using Vuforia;
 
-public class Autofocus : MonoBehaviour
+public class AutoFocus : MonoBehaviour
 {
     #region MONOBEHAVIOUR_METHODS
     void Start () 

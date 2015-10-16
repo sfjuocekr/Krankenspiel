@@ -20,14 +20,17 @@ public class CameraFocus : MonoBehaviour
             _FocusTarget = GameObject.Find("Player");
 
             if (_FocusTarget == null)
-                transform.position = new Vector3(0, 0, -100);
+                transform.position = new Vector3(0, 0, transform.position.z);
         }
         else
         {
             Vector3 _position = _FocusTarget.transform.position;
+                    _position.y += 256;
                     _position.z = transform.position.z;
 
             transform.position = _position;
+
+            transform.LookAt(_FocusTarget.transform);
         }
 	}
 }

@@ -9,7 +9,7 @@ public class ARRotation : MonoBehaviour
     void Update()
     {
         if (TrackedPointer == null)
-            ARPointers.pointers.TryGetValue(int.Parse(name), out TrackedPointer);
+            ARPointers.pointers.TryGetValue(name, out TrackedPointer);
         else
             transform.rotation = TrackedPointer.PointerRotation;
     }

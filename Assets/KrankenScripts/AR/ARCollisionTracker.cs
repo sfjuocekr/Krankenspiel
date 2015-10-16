@@ -30,10 +30,12 @@ public class ARCollisionTracker : MonoBehaviour
             {
                 _collisionTime += Time.deltaTime;
 
+                Debug.Log(_collisionTime);
+
                 int _seconds = Mathf.RoundToInt(_collisionTime);
 
                 if (_collisionTime >= _seconds && _collisionTime <= _seconds + Time.deltaTime)
-                    _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(_seconds));
+                    _collider.gameObject.SendMessage("CollisionTime", _seconds);
 
                 _collisions.Remove(_collider.gameObject);
                 _collisions.Add(_collider.gameObject, _collisionTime);
