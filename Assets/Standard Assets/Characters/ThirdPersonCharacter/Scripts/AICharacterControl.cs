@@ -105,5 +105,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             this.target = target;
         }
+
+        public void JumpToTarget(Transform target)
+        {
+            this.target = target;
+
+            character.Move(target.position, false, true);
+        }
     }
 }

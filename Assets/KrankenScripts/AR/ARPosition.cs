@@ -20,17 +20,20 @@ public class ARPosition : MonoBehaviour
         {
             //transform.position = TrackedPointer.PointerPosition;
 
-            Debug.DrawLine(_camera.transform.position, TrackedPointer.PointerPosition, Color.red);
+            //Debug.DrawLine(_camera.transform.position, TrackedPointer.PointerPosition, Color.red);
 
             RaycastHit hit;
 
             if (Physics.Raycast(_camera.transform.position, TrackedPointer.PointerPosition, out hit))
             {
-                Debug.DrawLine(hit.point, TrackedPointer.PointerPosition, Color.green);
+                //Debug.DrawLine(hit.point, TrackedPointer.PointerPosition, Color.green);
 
                 Vector3 _position = hit.point;
+                //_position.x *= 0.9f;
+                //_position.y -= 0.5f;
+                //Vector3 _position = TrackedPointer.PointerPosition / 25;
 
-                //_position.z = -(hit.distance * 0.5f) + (TrackedPointer.PointerPosition.z / hit.distance);
+                _position.z = 0;//-(hit.distance * 0.5f) + (TrackedPointer.PointerPosition.z / hit.distance);
 
                 transform.position = _position;
             } 
