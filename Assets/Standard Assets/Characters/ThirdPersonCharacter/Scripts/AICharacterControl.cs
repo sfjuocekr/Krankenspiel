@@ -11,7 +11,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public ThirdPersonCharacter character { get; private set; } // the character we are controlling
         public Transform target; // target to aim for
 
-        public Camera _camera;
+        private Camera _camera;
 
         private Vector3 targetPosition = Vector3.zero;
 
@@ -22,7 +22,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent = GetComponentInChildren<NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
 
-            _camera = GameObject.Find("TESTCAMERA").GetComponent<Camera>();
+            _camera = GameObject.Find("Camera").GetComponent<Camera>();
 
 	        agent.updateRotation = false;
 	        agent.updatePosition = true;
@@ -35,14 +35,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 RaycastHit hit;
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition); //Camera.main.ScreenPointToRay(Input.mousePosition);
+                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    targetPosition = new Vector3(hit.point.x, hit.point.y, 0);
+                    targetPosition = new Vector3(Mathf.Round(hit.point.x), Mathf.Round(hit.point.y), 0.0f);
 
                     target = null;
 
                     agent.SetDestination(targetPosition);
+                    agent.Resume();
 
                     Debug.Log("mouse");
                 }
@@ -54,19 +56,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 target = null;
 
                 agent.SetDestination(targetPosition);
+                agent.Resume();
 
                 Debug.Log("target");
             }
 
-            if (transform.position == targetPosition)
+            if (Mathf.Round(transform.position.x) == targetPosition.x && Mathf.Round(transform.position.y) == targetPosition.y)
+            {
+                agent.Stop();
                 targetPosition = Vector3.zero;
+
+                Debug.Log("stop");
+            }
 
             if (targetPosition == Vector3.zero)
                 character.Move(Vector3.zero, false, false);
             else
-            {
                 character.Move(agent.desiredVelocity, false, false);
-            }
 
             /*
             if (Input.GetMouseButtonDown(0))

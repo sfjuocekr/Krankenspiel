@@ -40,7 +40,7 @@ public class MessageHandler : MonoBehaviour
         }
         else if (_time < TriggerTime)
         {
-            TimerObject.GetComponent<TextMesh>().text = _time.ToString();
+            TimerObject.GetComponent<TextMesh>().text = (TriggerTime - _time).ToString();
             TimerObject.SetActive(true);
         }
     }

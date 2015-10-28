@@ -25,12 +25,12 @@ public class CameraFocus : MonoBehaviour
         else
         {
             Vector3 _position = _FocusTarget.transform.position;
-                    _position.y += 256;
+                    _position.y = 8;
                     _position.z = transform.position.z;
 
             transform.position = _position;
 
-            transform.LookAt(_FocusTarget.transform);
+            //transform.LookAt(_FocusTarget.transform, Vector3.up);
         }
 	}
 }

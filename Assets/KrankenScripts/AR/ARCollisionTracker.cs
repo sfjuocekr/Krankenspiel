@@ -6,6 +6,7 @@ public class ARCollisionTracker : MonoBehaviour
 {
     public List<GameObject> TrackedObjects;
     private Dictionary<GameObject, float> _collisions = new Dictionary<GameObject, float>();
+    private GameObject lastActiveCollider;
 
     void OnTriggerEnter(Collider _collider)
     {
@@ -15,6 +16,7 @@ public class ARCollisionTracker : MonoBehaviour
 
             if (!_collisions.TryGetValue(_collider.gameObject, out _collisionTime))
             {
+                lastActiveCollider = _collider.gameObject;
                 _collisions.Add(_collider.gameObject, 0.0f);
             }
         }
@@ -30,7 +32,7 @@ public class ARCollisionTracker : MonoBehaviour
             {
                 _collisionTime += Time.deltaTime;
 
-                Debug.Log(_collisionTime);
+                //Debug.Log(_collisionTime);
 
                 int _seconds = Mathf.RoundToInt(_collisionTime);
 
@@ -41,6 +43,8 @@ public class ARCollisionTracker : MonoBehaviour
                 _collisions.Add(_collider.gameObject, _collisionTime);
             }
         }
+        else
+            OnTriggerEnter(_collider);
     }
 
     void OnTriggerExit(Collider _collider)
@@ -55,6 +59,20 @@ public class ARCollisionTracker : MonoBehaviour
 
                 _collisions.Remove(_collider.gameObject);
             }
+        }
+    }
+
+    void Update()
+    {
+        if (!GetComponent<MeshRenderer>().enabled && lastActiveCollider != null)
+        {
+            lastActiveCollider.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
+
+            _collisions.Remove(lastActiveCollider);
+
+            //Debug.Log(lastActiveCollider.name);
+
+            lastActiveCollider = null;
         }
     }
 }
