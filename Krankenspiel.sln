@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krankenspiel.CSharp.Plugins", "Krankenspiel.CSharp.Plugins.csproj", "{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krankenspiel.CSharp", "Krankenspiel.CSharp.csproj", "{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krankenspiel.CSharp.Editor", "Krankenspiel.CSharp.Editor.csproj", "{4C6F9F60-9421-96CC-B779-7F770D778970}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6F9F60-9421-96CC-B779-7F770D778970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6F9F60-9421-96CC-B779-7F770D778970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6F9F60-9421-96CC-B779-7F770D778970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6F9F60-9421-96CC-B779-7F770D778970}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
