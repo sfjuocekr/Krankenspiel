@@ -25,7 +25,7 @@ public class CameraFocus : MonoBehaviour
         else
         {
             Vector3 _position = _FocusTarget.transform.position;
-                    _position.y = 8;
+                    _position.y = _FocusTarget.transform.position.y + 8;
                     _position.z = transform.position.z;
 
             transform.position = _position;

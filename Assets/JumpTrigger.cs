@@ -8,7 +8,7 @@ public class JumpTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider _collider)
     {
-        if (JumpTarget != null && gameObject.activeSelf)
+        if (JumpTarget != null && gameObject.activeSelf && _collider.name == "Player")
         {
             //gameObject.SetActive(false);
 

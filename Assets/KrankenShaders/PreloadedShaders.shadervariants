@@ -52,9 +52,9 @@ ShaderVariantCollection:
       first: {fileID: 69, guid: 0000000000000000f000000000000000, type: 0}
       second:
         variants:
-        - keywords: 
-          passType: 0
         - keywords: DIRECTIONAL SHADOWS_OFF
+          passType: 0
+        - keywords: POINT SHADOWS_OFF
           passType: 0
     data:
       first: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}

@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: bf3a085997d25db409016932dccf9172
+timeCreated: 1446121563
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AR BOX 1
+    100002: AR BOX 2
+    100004: AR BOX 3
+    100006: AR BOX 4
+    100008: AR BOX 5
+    100010: AR BUTTON 1
+    100012: AR BUTTON 2
+    100014: AR BUTTON 3
+    100016: AR BUTTON 4
+    100018: AR STAIR 1
+    100020: AR STAIR 2
+    100022: AR STAIR 3
+    100024: AR STAIR 4
+    100026: AR WALKWAY 1
+    100028: AR WALKWAY 2
+    100030: AR WALKWAY 3
+    100032: AR WALKWAY 4
+    100034: Level 1 Left side
+    100036: Level 2 Left side
+    100038: Level 3 Left side
+    100040: //RootNode
+    100042: Main Stair
+    100044: SEE SAW GOES HERE
+    100046: Tree
+    400000: AR BOX 1
+    400002: AR BOX 2
+    400004: AR BOX 3
+    400006: AR BOX 4
+    400008: AR BOX 5
+    400010: AR BUTTON 1
+    400012: AR BUTTON 2
+    400014: AR BUTTON 3
+    400016: AR BUTTON 4
+    400018: AR STAIR 1
+    400020: AR STAIR 2
+    400022: AR STAIR 3
+    400024: AR STAIR 4
+    400026: AR WALKWAY 1
+    400028: AR WALKWAY 2
+    400030: AR WALKWAY 3
+    400032: AR WALKWAY 4
+    400034: Level 1 Left side
+    400036: Level 2 Left side
+    400038: Level 3 Left side
+    400040: //RootNode
+    400042: Main Stair
+    400044: SEE SAW GOES HERE
+    400046: Tree
+    2300000: AR BOX 1
+    2300002: AR BOX 2
+    2300004: AR BOX 3
+    2300006: AR BOX 4
+    2300008: AR BOX 5
+    2300010: AR BUTTON 1
+    2300012: AR BUTTON 2
+    2300014: AR BUTTON 3
+    2300016: AR BUTTON 4
+    2300018: AR STAIR 1
+    2300020: AR STAIR 2
+    2300022: AR STAIR 3
+    2300024: AR STAIR 4
+    2300026: AR WALKWAY 1
+    2300028: AR WALKWAY 2
+    2300030: AR WALKWAY 3
+    2300032: AR WALKWAY 4
+    2300034: Level 1 Left side
+    2300036: Level 2 Left side
+    2300038: Level 3 Left side
+    2300040: Main Stair
+    2300042: SEE SAW GOES HERE
+    2300044: Tree
+    3300000: AR BOX 1
+    3300002: AR BOX 2
+    3300004: AR BOX 3
+    3300006: AR BOX 4
+    3300008: AR BOX 5
+    3300010: AR BUTTON 1
+    3300012: AR BUTTON 2
+    3300014: AR BUTTON 3
+    3300016: AR BUTTON 4
+    3300018: AR STAIR 1
+    3300020: AR STAIR 2
+    3300022: AR STAIR 3
+    3300024: AR STAIR 4
+    3300026: AR WALKWAY 1
+    3300028: AR WALKWAY 2
+    3300030: AR WALKWAY 3
+    3300032: AR WALKWAY 4
+    3300034: Level 1 Left side
+    3300036: Level 2 Left side
+    3300038: Level 3 Left side
+    3300040: Main Stair
+    3300042: SEE SAW GOES HERE
+    3300044: Tree
+    4300000: Tree
+    4300002: Level 1 Left side
+    4300004: Level 2 Left side
+    4300006: Level 3 Left side
+    4300008: AR WALKWAY 1
+    4300010: Main Stair
+    4300012: AR STAIR 1
+    4300014: AR STAIR 2
+    4300016: AR STAIR 3
+    4300018: AR STAIR 4
+    4300020: AR WALKWAY 2
+    4300022: AR WALKWAY 3
+    4300024: AR WALKWAY 4
+    4300026: AR BOX 1
+    4300028: AR BOX 2
+    4300030: AR BOX 3
+    4300032: AR BOX 4
+    4300034: AR BOX 5
+    4300036: SEE SAW GOES HERE
+    4300038: AR BUTTON 1
+    4300040: AR BUTTON 2
+    4300042: AR BUTTON 3
+    4300044: AR BUTTON 4
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

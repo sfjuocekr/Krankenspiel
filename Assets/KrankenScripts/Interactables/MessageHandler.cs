@@ -23,6 +23,9 @@ public class MessageHandler : MonoBehaviour
             { "ToggleCollider", () => ToggleCollider() },
             { "ToggleHingeJoint", () => ToggleHingeJoint() }
         };
+
+        if (TimerObject != null)
+            TimerObject.SetActive(false);
     }
 
     void CollisionTime(int _time)
