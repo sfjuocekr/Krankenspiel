@@ -31,11 +31,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Update is called once per frame
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                JumpToTarget(new Vector3(100,100,0));
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition); //Camera.main.ScreenPointToRay(Input.mousePosition);
-                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -106,11 +110,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             this.target = target;
         }
 
-        public void JumpToTarget(Transform target)
+        public void JumpToTarget(Vector3 targetPosition)
         {
-            this.target = target;
+            //this.target = target;
 
-            character.Move(target.position, false, true);
+            agent.Stop();
+
+            character.Move(targetPosition, false, true);
+            character.GetComponent<Rigidbody>().AddForce(targetPosition);
         }
     }
 }

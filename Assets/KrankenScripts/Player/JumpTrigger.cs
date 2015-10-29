@@ -12,7 +12,7 @@ public class JumpTrigger : MonoBehaviour
         {
             //gameObject.SetActive(false);
 
-            _collider.GetComponent<AICharacterControl>().JumpToTarget(JumpTarget.transform);
+            _collider.GetComponent<AICharacterControl>().JumpToTarget(JumpTarget.transform.position);
 
             //_collider.GetComponent<Rigidbody>().velocity += Vector3.up * 100;
 

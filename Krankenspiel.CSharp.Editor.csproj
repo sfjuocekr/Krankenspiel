@@ -139,6 +139,7 @@
   <ItemGroup>
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\StreamingAssets\QCAR\Krankenspiel.xml" />
+    <None Include="Assets\StreamingAssets\QCAR\SuchFancy.xml" />
     <None Include="Assets\Vuforia\Editor\Scripts\Qualcomm.Vuforia.UnityExtensions.Editor.XML" />
     <None Include="Assets\Vuforia\Editor\WebcamProfiles\profiles.xml" />
     <None Include="Assets\Vuforia\Scripts\Internal\Qualcomm.Vuforia.UnityExtensions.XML" />
