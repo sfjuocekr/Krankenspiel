@@ -20,7 +20,7 @@ public class NavMeshCharacterControl : MonoBehaviour
         agent = GetComponentInChildren<NavMeshAgent>();
         character = GetComponent<ThirdPersonCharacter>();
 
-        _camera = GameObject.Find("StereoCameraLeft").GetComponent<Camera>();
+        _camera = GameObject.Find("Camera").GetComponent<Camera>();
 
         agent.updateRotation = false;
         agent.updatePosition = true;
