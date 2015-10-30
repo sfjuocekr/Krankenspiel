@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class JumpTrigger : MonoBehaviour
 {
-    public GameObject JumpTarget { get; private set; }
+    private AutomatedControls _controller;
 
-    void OnTriggerStay(Collider _collider)
+    void Awake()
     {
-        if (JumpTarget != null && gameObject.activeSelf && _collider.name == "Player")
-        {
-            gameObject.SetActive(false);
+        _controller = GameObject.Find("Player").GetComponent<AutomatedControls>();
+    }
 
-            _collider.GetComponent<NavMeshCharacterControl>().JumpToTarget(JumpTarget.transform.position);
+    void OnTriggerEnter(Collider _collider)
+    {
+        if (_collider.name == "Player")
+        {
+            Debug.Log("Jump!");
+            _controller.m_Jump = true;
         }
     }
 }
