@@ -584,6 +584,14 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1954927590}
+    - target: {fileID: 11495642, guid: efa214627303e734086dffcbdc64bef2, type: 2}
+      propertyPath: m_StationaryTurnSpeed
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 11495642, guid: efa214627303e734086dffcbdc64bef2, type: 2}
+      propertyPath: m_MovingTurnSpeed
+      value: 720
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efa214627303e734086dffcbdc64bef2, type: 2}
   m_IsPrefabParent: 0
@@ -717,7 +725,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 402780, guid: a728f38c4c25ba74d8c1d455803194ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 402780, guid: a728f38c4c25ba74d8c1d455803194ed, type: 2}
       propertyPath: m_LocalPosition.y
