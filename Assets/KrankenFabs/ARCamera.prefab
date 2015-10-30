@@ -11,8 +11,6 @@ GameObject:
   - 20: {fileID: 2074196}
   - 114: {fileID: 11461482}
   - 92: {fileID: 9225550}
-  - 124: {fileID: 12451120}
-  - 114: {fileID: 11472660}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -30,9 +28,9 @@ GameObject:
   - 4: {fileID: 448324}
   - 33: {fileID: 3334758}
   - 64: {fileID: 6485794}
-  - 23: {fileID: 2360772}
-  m_Layer: 0
-  m_Name: Plane
+  - 23: {fileID: 2347916}
+  m_Layer: 8
+  m_Name: ARTranslationPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,11 +64,11 @@ GameObject:
   - 114: {fileID: 11475350}
   - 114: {fileID: 11457456}
   - 114: {fileID: 11459320}
-  - 114: {fileID: 11495274}
   - 114: {fileID: 11488726}
   - 114: {fileID: 11415034}
   - 114: {fileID: 11463112}
   - 114: {fileID: 11442598}
+  - 114: {fileID: 11421242}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: Untagged
@@ -84,8 +82,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170658}
-  m_LocalRotation: {x: .108866878, y: 0, z: 0, w: .994056344}
-  m_LocalPosition: {x: -16, y: 8, z: -16}
+  m_LocalRotation: {x: .129409537, y: .129409537, z: -.0170370881, w: .982962966}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480508}
@@ -109,9 +107,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117556}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 5, y: 1, z: 2.5}
+  m_LocalRotation: {x: -.0794593245, y: -.603553414, z: .786566079, w: -.103553407}
+  m_LocalPosition: {x: 0, y: 0, z: 17}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 480508}
   m_RootOrder: 0
@@ -163,7 +161,7 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
   m_StereoMirrorMode: 0
---- !u!23 &2360772
+--- !u!23 &2347916
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -254,6 +252,17 @@ MonoBehaviour:
   mKeepUDTBuildingBehaviourAlive: 0
   mKeepCloudRecoBehaviourAlive: 0
   mKeepSmartTerrainAlive: 0
+--- !u!114 &11421242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644b48f6598d2fa46898343ced4480e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6eaba4e9333f9841b0629114aa5a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FocusTarget: {fileID: 0}
+  FocusTarget: {fileID: 0}
 --- !u!114 &11455676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,8 +310,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mDataSetsToLoad:
+  - SuchFancy
   - Krankenspiel
   mDataSetsToActivate:
+  - SuchFancy
   - Krankenspiel
   mExternalDatasetRoots: []
 --- !u!114 &11461482
@@ -327,19 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53da1adc3659e8c45996dbe2fd7113ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11472660
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4add68fcad15844891a06f869084d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  matteShader: {fileID: 4800000, guid: 1ce7eb78425fb1540838bc9d5d95857a, type: 3}
-  disableMattes: 0
 --- !u!114 &11475350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,12 +349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4114ca95ba12f394a8ad43abfc86745c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VuforiaLicenseKey: AUjNZqP/////AAAAAfy31r9RDECQjXL9V531OXFXHKfK4JsJyPMhwMZbJQln4z69I0jY1Q5QF4OlrhKI2TJXjbHGvVXdrT+8RJ5UqfTNRT7Q/cSGwMmoWvsCXNjqUk5wn4y3l0gNt8h0dbi8qcDr3DowoVwI9DJ/PkgJ+dRvMqhtw7vsyvH9X3XacTu1gLdehJkr5+PymqJlCmFysbX4s7v0LnN25XOR/S/ViGQVhVWzQvjm/xpxGChZD0QDdcuozrCciPBUmPDjrKljnLORXnBIl+H6lU3JfOEvyjJS60h5kQB4pvkM0KnKvGp9ALIDUlgslQPWhQXHuXAtC/tx6QKEjcijKv5dJGA3bkmpH3J+C2tUQ4IUWrcuOWHR
+  VuforiaLicenseKey: AaZC7TH/////AAAAA5r6XQ8Sy08dsXA2iGYip+gJpHLD2SJp+T9qWJEaD7W/zAO0V6P4nDhHflzPyuZ/NYIJnOjJebdUOScKgIRbuFLKApWC1eXOZ/6Nv/JAjKO4jbOURAUS4UxDegbXJdGWLRancB1LZLQGKTAJkdkvpdXTgEApBEY4fmQVVCC3Ob1tcUd0ljk0+rADL2JRB4IPl7l7KpK4uGf4aBZ2NCZQFPpInLooXeBjf1ZiTN9M6z0Ur4gDGVsWExIhL56C/9xYnPzgEgD1lZHHSJjB7gPpi//OcH47MycvJeEKVkZHasel3qs0KJHYrVe4Ds08sA/KuxqUAhm3wxK3qL23zHr176S01bDMx2XZslvMVLnIWZOS
   mCameraOffset: 0
   mSkewFrustum: 1
-  CameraDeviceModeSetting: -1
-  MaxSimultaneousImageTargets: 1
-  MaxSimultaneousObjectTargets: 1
+  CameraDeviceModeSetting: -3
+  MaxSimultaneousImageTargets: 2
+  MaxSimultaneousObjectTargets: 0
   UseDelayedLoadingObjectTargets: 0
   CameraDirection: 0
   MirrorVideoBackground: 0
@@ -384,30 +382,8 @@ MonoBehaviour:
   RenderTextureLayer: 30
   mPlayModeRenderVideo: 1
   mDeviceNameSetInEditor: 
-  mFlipHorizontally: 0
+  mFlipHorizontally: 1
   mTurnOffWebCam: 0
---- !u!114 &11495274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0f29306fbc9e6f44a31463a40747c71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mAutoInitTracker: 0
-  mAutoStartTracker: 0
-  mAutoInitBuilder: 0
-  mSceneUnitsToMillimeter: 1
---- !u!124 &12451120
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105084}
-  m_Enabled: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

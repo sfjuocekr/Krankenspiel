@@ -1,27 +1,24 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 public class MessageHandler : MonoBehaviour
 {
     public GameObject InteractionObject;
     public GameObject TimerObject;
-
     public Material ActiveMaterial;
     public Material InactiveMaterial;
-
     public int TriggerTime = 5;
-    public string Activity = "Activate";
+    public string Activity = "ToggleCollider";
 
     private Dictionary<string, Action> _activities;
 
-    void Start()
+    void Awake()
     {
         _activities = new Dictionary<string, Action>()
         {
-            { "ToggleCollider", () => ToggleCollider() },
-            { "ToggleHingeJoint", () => ToggleHingeJoint() }
+            { "ToggleCollider", () => ToggleCollider() },               // Toggle the collider on InteractionObject
+            { "ToggleKinematicState", () => ToggleKinematicState() }    // Toggle the kinematic state on the Rigidbody component of InteractionObject
         };
 
         if (TimerObject != null)
@@ -50,24 +47,24 @@ public class MessageHandler : MonoBehaviour
 
     void ToggleCollider()
     {
-        GetComponent<Collider>().isTrigger = !GetComponent<Collider>().isTrigger;
+        InteractionObject.GetComponent<Collider>().isTrigger = !GetComponent<Collider>().isTrigger;
 
-        if (GetComponent<Collider>().isTrigger)
-            GetComponent<Renderer>().material = InactiveMaterial;
+        if (InteractionObject.GetComponent<Collider>().isTrigger)
+            InteractionObject.GetComponent<Renderer>().material = InactiveMaterial;
         else
-            GetComponent<Renderer>().material = ActiveMaterial;
+            InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
 
         TimerObject.SetActive(false);
     }
 
-    void ToggleHingeJoint()
+    void ToggleKinematicState()
     {
         InteractionObject.GetComponent<Rigidbody>().isKinematic = !InteractionObject.GetComponent<Rigidbody>().isKinematic;
 
         if (InteractionObject.GetComponent<Rigidbody>().isKinematic)
-            GetComponent<Renderer>().material = InactiveMaterial;
+            InteractionObject.GetComponent<Renderer>().material = InactiveMaterial;
         else
-            GetComponent<Renderer>().material = ActiveMaterial;
+            InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
 
         TimerObject.SetActive(false);
     }

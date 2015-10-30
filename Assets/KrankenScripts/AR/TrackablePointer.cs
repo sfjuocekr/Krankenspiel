@@ -5,13 +5,15 @@ Confidential and Proprietary - Qualcomm Connected Experiences, Inc.
 
 Customized by: Sjoer van der Ploeg.
 Reason: I only care about the tracked position.
-        Rotation and visibility are controlled by the object itself.
+        Rotation and visibility can be controlled by the object itself.
 ==============================================================================*/
 
 using UnityEngine;
 
 namespace Vuforia
 {
+    [RequireComponent(typeof(TrackableBehaviour))]
+
     /// <summary>
     /// A custom handler that implements the ITrackableEventHandler interface.
     /// </summary>
@@ -23,7 +25,7 @@ namespace Vuforia
         private TrackableBehaviour mTrackableBehaviour;
 
         [HideInInspector]
-        public bool OnScreen;
+        public bool OnScreen = false;
 
         [HideInInspector]
         public Vector3 PointerPosition;
@@ -35,16 +37,11 @@ namespace Vuforia
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
 
-        void Start()
+        void Awake()
         {
             mTrackableBehaviour = GetComponent<TrackableBehaviour>();
+            mTrackableBehaviour.RegisterTrackableEventHandler(this);
 
-            if (mTrackableBehaviour)
-            {
-                mTrackableBehaviour.RegisterTrackableEventHandler(this);
-            }
-
-            OnScreen = false;
             PointerPosition = transform.position;
             PointerRotation = transform.rotation;
         }

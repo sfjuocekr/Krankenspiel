@@ -1,20 +1,18 @@
-using System;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(ThirdPersonCharacter))]
+
 public class NavMeshCharacterControl : MonoBehaviour
 {
     public NavMeshAgent agent { get; private set; } // the navmesh agent required for the path finding
     public ThirdPersonCharacter character { get; private set; } // the character we are controlling
-    public Transform target; // target to aim for
+    public Transform target { get; private set; } // target to aim for
 
     private Camera _camera;
-
     private Vector3 targetPosition = Vector3.zero;
 
-    // Use this for initialization
     private void Start()
     {
         agent = GetComponentInChildren<NavMeshAgent>();
@@ -46,8 +44,6 @@ public class NavMeshCharacterControl : MonoBehaviour
 
                 agent.SetDestination(targetPosition);
                 agent.Resume();
-
-                Debug.Log("mouse");
             }
         }
         else if (target != null)
@@ -58,16 +54,12 @@ public class NavMeshCharacterControl : MonoBehaviour
 
             agent.SetDestination(targetPosition);
             agent.Resume();
-
-            Debug.Log("target");
         }
 
         if (Mathf.Round(transform.position.x) == targetPosition.x && Mathf.Round(transform.position.y) == targetPosition.y)
         {
             agent.Stop();
             targetPosition = Vector3.zero;
-
-            Debug.Log("stop");
         }
 
         if (targetPosition == Vector3.zero)
@@ -84,9 +76,12 @@ public class NavMeshCharacterControl : MonoBehaviour
 
     public void JumpToTarget(Vector3 targetPosition)
     {
+        character.Move(targetPosition, false, true);
+
         agent.Stop();
 
-        character.Move(targetPosition, false, true);
         character.GetComponent<Rigidbody>().AddForce(targetPosition);
+
+        // have to wait for the character to land before resuming agent!
     }
 }

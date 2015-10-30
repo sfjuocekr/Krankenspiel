@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class ARCollisionTracker : MonoBehaviour
 {
     public List<GameObject> TrackedObjects;
+
     private Dictionary<GameObject, float> _collisions = new Dictionary<GameObject, float>();
-    private GameObject lastActiveCollider;
+    private GameObject _lastActiveCollider = null;
 
     void OnTriggerEnter(Collider _collider)
     {
@@ -16,7 +16,7 @@ public class ARCollisionTracker : MonoBehaviour
 
             if (!_collisions.TryGetValue(_collider.gameObject, out _collisionTime))
             {
-                lastActiveCollider = _collider.gameObject;
+                _lastActiveCollider = _collider.gameObject;
                 _collisions.Add(_collider.gameObject, 0.0f);
             }
         }
@@ -31,8 +31,6 @@ public class ARCollisionTracker : MonoBehaviour
             if (_collisions.TryGetValue(_collider.gameObject, out _collisionTime))
             {
                 _collisionTime += Time.deltaTime;
-
-                //Debug.Log(_collisionTime);
 
                 int _seconds = Mathf.RoundToInt(_collisionTime);
 
@@ -56,7 +54,6 @@ public class ARCollisionTracker : MonoBehaviour
             if (_collisions.TryGetValue(_collider.gameObject, out _collisionTime))
             {
                 _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
-
                 _collisions.Remove(_collider.gameObject);
             }
         }
@@ -64,15 +61,11 @@ public class ARCollisionTracker : MonoBehaviour
 
     void Update()
     {
-        if (!GetComponent<MeshRenderer>().enabled && lastActiveCollider != null)
+        if (!GetComponent<MeshRenderer>().enabled && _lastActiveCollider != null)
         {
-            lastActiveCollider.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
-
-            _collisions.Remove(lastActiveCollider);
-
-            //Debug.Log(lastActiveCollider.name);
-
-            lastActiveCollider = null;
+            _lastActiveCollider.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
+            _collisions.Remove(_lastActiveCollider);
+            _lastActiveCollider = null;
         }
     }
 }

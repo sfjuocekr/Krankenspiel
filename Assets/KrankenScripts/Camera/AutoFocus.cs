@@ -1,5 +1,7 @@
 ﻿/*============================================================================== 
- * Copyright (c) 2015 Qualcomm Connected Experiences, Inc. All Rights Reserved. 
+ * Copyright (c) 2015 Qualcomm Connected Experiences, Inc. All Rights Reserved.
+ *
+ * Customized by: Sjoer van der Ploeg.
  * ==============================================================================*/
 using UnityEngine;
 using System.Collections;
@@ -8,25 +10,15 @@ using Vuforia;
 public class AutoFocus : MonoBehaviour
 {
     #region MONOBEHAVIOUR_METHODS
-    void Start () 
+    void Start()
     {
         VuforiaAbstractBehaviour vuforia = FindObjectOfType<VuforiaAbstractBehaviour>();
+
         vuforia.RegisterVuforiaStartedCallback(OnVuforiaStarted);
         vuforia.RegisterOnPauseCallback(OnPaused);
-	}
-
-    void Update()
-    {
-        // Trigger an autofocus event on tap
-        if (Input.GetMouseButtonUp(0))
-        {
-            StartCoroutine(TriggerAutofocus());
-        }
     }
 
-    
-    #endregion // MONOBEHAVIOUR_METHODS
-
+    #endregion // MONOBEHAVIOUR_METHOD
 
     #region PRIVATE_METHODS
     private void OnVuforiaStarted()
@@ -44,16 +36,5 @@ public class AutoFocus : MonoBehaviour
         }
     }
 
-    private IEnumerator TriggerAutofocus()
-    {
-        CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_TRIGGERAUTO);
-
-        // Wait 2 seconds
-        yield return new WaitForSeconds(2);
-
-        // Restore continuous autofocus mode
-        CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
-    }
     #endregion // PRIVATE_METHODS
-
 }
