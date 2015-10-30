@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 public class JumpTrigger : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class JumpTrigger : MonoBehaviour
         {
             //gameObject.SetActive(false);
 
-            _collider.GetComponent<AICharacterControl>().JumpToTarget(JumpTarget.transform.position);
+            _collider.GetComponent<NavMeshCharacterControl>().JumpToTarget(JumpTarget.transform.position);
 
             //_collider.GetComponent<Rigidbody>().velocity += Vector3.up * 100;
 

@@ -89,6 +89,7 @@
     <Compile Include="Assets\KrankenScripts\Interactables\MessageHandler.cs" />
     <Compile Include="Assets\KrankenScripts\Interactables\StopCharacterMovement.cs" />
     <Compile Include="Assets\KrankenScripts\Player\JumpTrigger.cs" />
+    <Compile Include="Assets\KrankenScripts\Player\NavMeshCharacterControl.cs" />
     <Compile Include="Assets\KrankenScripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
@@ -129,6 +130,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\StreamingAssets\QCAR\Krankenspiel.xml" />
     <None Include="Assets\StreamingAssets\QCAR\SuchFancy.xml" />
     <None Include="Assets\Vuforia\Editor\Scripts\Qualcomm.Vuforia.UnityExtensions.Editor.XML" />

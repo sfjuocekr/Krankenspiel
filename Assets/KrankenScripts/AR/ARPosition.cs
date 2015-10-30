@@ -6,11 +6,11 @@ public class ARPosition : MonoBehaviour
 {
     public LayerMask LayerMask;
     private TrackablePointer TrackedPointer;
-    private Camera _camera;
+    private Transform _camera;
 
     void Start()
     {
-        _camera = GameObject.Find("Camera").GetComponent<Camera>();
+        _camera = GameObject.Find("ARCamera").transform;
     }
 
     void Update()
@@ -28,11 +28,11 @@ public class ARPosition : MonoBehaviour
             if (Physics.Raycast(_camera.transform.position, TrackedPointer.PointerPosition, out hit, 1000, LayerMask))
             {
                 Vector3 _position = hit.point;
-                _position.x = hit.point.x + 0.5f;
+                //_position.x = hit.point.x + 0.5f;
                 //_position.y -= 0.5f;
                 //Vector3 _position = TrackedPointer.PointerPosition / 25;
 
-                _position.z = 0;//-(hit.distance * 0.5f) + (TrackedPointer.PointerPosition.z / hit.distance);
+                //_position.z = 0;//-(hit.distance * 0.5f) + (TrackedPointer.PointerPosition.z / hit.distance);
 
                 transform.position = _position;
             }
