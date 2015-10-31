@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 public class MessageHandler : MonoBehaviour
 {
+    public int TriggerTime = 5;
+    public string Activity = "ToggleCollider";
+
     public GameObject InteractionObject;
     public GameObject TimerObject;
     public Material ActiveMaterial;
-    public Material InactiveMaterial;
-    public int TriggerTime = 5;
-    public string Activity = "ToggleCollider";
+
+    private Material InactiveMaterial;
 
     private Dictionary<string, Action> _activities;
 
@@ -18,11 +20,17 @@ public class MessageHandler : MonoBehaviour
         _activities = new Dictionary<string, Action>()
         {
             { "ToggleCollider", () => ToggleCollider() },               // Toggle the collider on InteractionObject
+            { "ToggleActive", () => ToggleActive() },
             { "ToggleKinematicState", () => ToggleKinematicState() }    // Toggle the kinematic state on the Rigidbody component of InteractionObject
         };
 
         if (TimerObject != null)
             TimerObject.SetActive(false);
+
+        if (Activity == "ToggleActive")
+            InactiveMaterial = GetComponent<Renderer>().material;
+        else
+            InactiveMaterial = InteractionObject.GetComponent<Renderer>().material;
     }
 
     void CollisionTime(int _time)
@@ -53,6 +61,18 @@ public class MessageHandler : MonoBehaviour
             InteractionObject.GetComponent<Renderer>().material = InactiveMaterial;
         else
             InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
+
+        TimerObject.SetActive(false);
+    }
+
+    void ToggleActive()
+    {
+        InteractionObject.SetActive(!InteractionObject.activeSelf);
+
+        if (InteractionObject.activeSelf)
+            GetComponent<Renderer>().material = InactiveMaterial;
+        else
+            GetComponent<Renderer>().material = ActiveMaterial;
 
         TimerObject.SetActive(false);
     }

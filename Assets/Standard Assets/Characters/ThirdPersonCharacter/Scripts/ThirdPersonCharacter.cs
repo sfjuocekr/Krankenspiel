@@ -43,8 +43,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+		public void Move(Vector3 move, bool crouch = false, bool jump = false, float jumpPower = 0)
 		{
+            m_JumpPower = (jumpPower == 0) ? m_JumpPower : jumpPower;
 
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired

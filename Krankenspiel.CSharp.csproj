@@ -92,6 +92,7 @@
     <Compile Include="Assets\KrankenScripts\Player\JumpTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Player\NavMeshCharacterControl.cs" />
     <Compile Include="Assets\KrankenScripts\Player\StopTrigger.cs" />
+    <Compile Include="Assets\KrankenScripts\Player\TurnTrigger.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CylinderTargetBehaviour.cs" />
@@ -126,7 +127,6 @@
     <Compile Include="Assets\Vuforia\Scripts\VuforiaBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WebCamBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WireframeBehaviour.cs" />
-    <Compile Include="Assets\Vuforia\Scripts\WireframeBehaviourMod.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WireframeTrackableEventHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
   </ItemGroup>
