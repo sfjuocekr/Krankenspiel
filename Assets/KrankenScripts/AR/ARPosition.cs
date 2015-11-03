@@ -23,7 +23,11 @@ public class ARPosition : MonoBehaviour
 
             if (Physics.Raycast(_camera.transform.position, TrackedPointer.PointerPosition, out hit, 1000, LayerMask))
             {
-                transform.position = hit.point;
+                Vector3 _position = hit.point;
+                //_position.x += 4;     //hack some translation!
+                transform.position = _position;
+
+                //transform.position = hit.point;
             }
         }
     }

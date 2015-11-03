@@ -20,7 +20,7 @@ public class MessageHandler : MonoBehaviour
         _activities = new Dictionary<string, Action>()
         {
             { "ToggleCollider", () => ToggleCollider() },               // Toggle the collider on InteractionObject
-            { "ToggleActive", () => ToggleActive() },
+            { "ToggleActive", () => ToggleActive() },                   // Toggle InteractionObject's active state
             { "ToggleKinematicState", () => ToggleKinematicState() }    // Toggle the kinematic state on the Rigidbody component of InteractionObject
         };
 
