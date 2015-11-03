@@ -538,7 +538,7 @@ Transform:
   - {fileID: 709051790}
   - {fileID: 2013396787}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!1 &514011276
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,11 +893,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: 0-100mm
-  mPreviousScale: {x: 100, y: 100, z: 100}
-  mPreserveChildSize: 1
-  mInitializedInEditor: 1
-  mDataSetPath: QCAR/Krankenspiel.xml
+  mTrackableName: 
+  mPreviousScale: {x: 0, y: 0, z: 0}
+  mPreserveChildSize: 0
+  mInitializedInEditor: 0
+  mDataSetPath: 
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -1270,11 +1270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: RaketjAR
-  mPreviousScale: {x: 100, y: 100, z: 100}
-  mPreserveChildSize: 1
-  mInitializedInEditor: 1
-  mDataSetPath: QCAR/SuchFancy.xml
+  mTrackableName: 
+  mPreviousScale: {x: 0, y: 0, z: 0}
+  mPreserveChildSize: 0
+  mInitializedInEditor: 0
+  mDataSetPath: 
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9f75c5f06d2e54b91ccab2adcbe1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 5
+  JumpPower: 6
 --- !u!65 &857270738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1567,10 +1567,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerTime: 5
-  Activity: ToggleActive
-  InteractionObject: {fileID: 368514413}
-  TimerObject: {fileID: 1107015838}
-  ActiveMaterial: {fileID: 2100000, guid: f0b6ac9b2ab414144b10f7d00e38ba1e, type: 2}
+  Activity: ToggleCollider
+  InteractionObject: {fileID: 0}
+  TimerObject: {fileID: 0}
+  ActiveMaterial: {fileID: 0}
 --- !u!65 &982374094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1825,6 +1825,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 900e53dd850c9cc4281be6fa21bdfea5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a24037aa2dae5b145b048dcaf948032a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 900e53dd850c9cc4281be6fa21bdfea5, type: 3}
   m_IsPrefabParent: 0
@@ -1870,7 +1874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9f75c5f06d2e54b91ccab2adcbe1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 9
+  JumpPower: 6
 --- !u!65 &1062783313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2138,7 +2142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9f75c5f06d2e54b91ccab2adcbe1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 7
+  JumpPower: 6
 --- !u!65 &1161358678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2207,9 +2211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af76c97faf851cd4083491d9c2a6a7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackedObjects:
-  - {fileID: 1306035012}
-  - {fileID: 0}
+  TrackedObjects: []
 --- !u!54 &1182865910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2264,7 +2266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!23 &1182865914
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2341,7 +2343,7 @@ Transform:
   - {fileID: 827378376}
   - {fileID: 708131391}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1184614677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2401,8 +2403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af76c97faf851cd4083491d9c2a6a7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackedObjects:
-  - {fileID: 982374091}
+  TrackedObjects: []
 --- !u!54 &1244634654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2457,7 +2458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!23 &1244634658
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2504,6 +2505,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244634651}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1277197572
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.70612144
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.1404829
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.14976597
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 483616, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 39a1b89d8bc014844bcde02d38e4790f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1306035012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,11 +2591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6483decebc148a49aadbba9b964462f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerTime: 3
+  TriggerTime: 5
   Activity: ToggleCollider
-  InteractionObject: {fileID: 1306035012}
-  TimerObject: {fileID: 514011276}
-  ActiveMaterial: {fileID: 2100000, guid: 9335c65f42a781d4c881b93bec5412b9, type: 2}
+  InteractionObject: {fileID: 0}
+  TimerObject: {fileID: 0}
+  ActiveMaterial: {fileID: 0}
 --- !u!65 &1306035015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2746,7 +2789,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &1340043886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,11 +2869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: PikaAR
-  mPreviousScale: {x: 100, y: 100, z: 100}
+  mTrackableName: 
+  mPreviousScale: {x: 0, y: 0, z: 0}
   mPreserveChildSize: 0
-  mInitializedInEditor: 1
-  mDataSetPath: QCAR/SuchFancy.xml
+  mInitializedInEditor: 0
+  mDataSetPath: 
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -3092,7 +3135,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 6.0999999}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &1452852440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,7 +3238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!23 &1452852447
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3452,7 +3495,7 @@ Transform:
   - {fileID: 1244634652}
   - {fileID: 1452852441}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1605419238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,7 +3600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9f75c5f06d2e54b91ccab2adcbe1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 8
+  JumpPower: 6
 --- !u!65 &1679570000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3742,7 +3785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1001 &1797616298
 Prefab:
   m_ObjectHideFlags: 0
@@ -4124,7 +4167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1954927586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,7 +4194,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &1974152731
 GameObject:
   m_ObjectHideFlags: 0
