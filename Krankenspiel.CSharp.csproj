@@ -51,6 +51,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -91,6 +94,8 @@
     <Compile Include="Assets\KrankenScripts\Interactables\LevelExitTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Interactables\MessageHandler.cs" />
     <Compile Include="Assets\KrankenScripts\Interactables\StopCharacterMovement.cs" />
+    <Compile Include="Assets\KrankenScripts\Light\Rotate.cs" />
+    <Compile Include="Assets\KrankenScripts\Menu\MenuButton.cs" />
     <Compile Include="Assets\KrankenScripts\Player\AutomatedControls.cs" />
     <Compile Include="Assets\KrankenScripts\Player\JumpTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Player\NavMeshCharacterControl.cs" />
