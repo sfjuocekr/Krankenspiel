@@ -1,11 +1,11 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krankenspiel.CSharp.Plugins", "Krankenspiel.CSharp.Plugins.csproj", "{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{7256B702-37C7-53DE-0744-C77FED2A2C58}") = "Krankenspiel", "Assembly-CSharp-firstpass.csproj", "{64D840F9-A124-B350-0D82-CB417950FAB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krankenspiel.CSharp", "Krankenspiel.CSharp.csproj", "{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}"
+Project("{7256B702-37C7-53DE-0744-C77FED2A2C58}") = "Krankenspiel", "Assembly-CSharp.csproj", "{CF649C4E-0937-9CFC-410E-A8E83F3C3CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krankenspiel.CSharp.Editor", "Krankenspiel.CSharp.Editor.csproj", "{4C6F9F60-9421-96CC-B779-7F770D778970}"
+Project("{7256B702-37C7-53DE-0744-C77FED2A2C58}") = "Krankenspiel", "Assembly-CSharp-Editor.csproj", "{E79B4D07-C64F-DFCC-C9CC-3312DF3770F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,40 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{974F8F59-4E3F-13DB-C3EA-42AF29DB0271}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5889EF3F-B2BB-5BCB-4DBD-6CBF6DC1AFBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C6F9F60-9421-96CC-B779-7F770D778970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C6F9F60-9421-96CC-B779-7F770D778970}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C6F9F60-9421-96CC-B779-7F770D778970}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C6F9F60-9421-96CC-B779-7F770D778970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D840F9-A124-B350-0D82-CB417950FAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D840F9-A124-B350-0D82-CB417950FAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D840F9-A124-B350-0D82-CB417950FAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D840F9-A124-B350-0D82-CB417950FAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF649C4E-0937-9CFC-410E-A8E83F3C3CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF649C4E-0937-9CFC-410E-A8E83F3C3CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF649C4E-0937-9CFC-410E-A8E83F3C3CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF649C4E-0937-9CFC-410E-A8E83F3C3CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79B4D07-C64F-DFCC-C9CC-3312DF3770F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E79B4D07-C64F-DFCC-C9CC-3312DF3770F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E79B4D07-C64F-DFCC-C9CC-3312DF3770F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E79B4D07-C64F-DFCC-C9CC-3312DF3770F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+						GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.IndentWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
 EndGlobal

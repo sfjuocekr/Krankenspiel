@@ -404,7 +404,7 @@ GameObject:
   - 114: {fileID: 11459640}
   - 114: {fileID: 11495642}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerEthan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2402,6 +2402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  m_jumpPower: 6
   m_Jump: 0
   m_Moving: 0
 --- !u!114 &11495642
