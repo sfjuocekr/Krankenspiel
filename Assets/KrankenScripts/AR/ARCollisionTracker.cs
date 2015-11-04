@@ -65,7 +65,6 @@ public class ARCollisionTracker : MonoBehaviour
                 _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
                 _collisions.Remove(_collider.gameObject);
                 _analytics.RegisterARTime(_collider.name, _collisionTime, _collider.gameObject.GetComponent<MessageHandler>().TriggerTime, (_collider.gameObject.GetComponent<MessageHandler>().TriggerTime >= _collisionTime));
-                _lastActiveCollider = null;
             }
         }
     }
