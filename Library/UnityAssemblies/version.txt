@@ -1,7 +1,6 @@
 5.2.2f1:2.1.0.0
 Android
 D:/Neuer Ordner/Unity/Editor/Data/Managed/UnityEngine.dll
-D:/Neuer Ordner/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll
 D:/Neuer Ordner/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 D:/Neuer Ordner/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
 D:/Neuer Ordner/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll
