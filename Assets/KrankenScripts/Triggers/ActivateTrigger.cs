@@ -9,8 +9,9 @@ public class ActivateTrigger : MonoBehaviour
         Trigger.SetActive(false);
     }
 
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider _collider)
     {
-        Trigger.SetActive(true);
+        if (_collider.name == "Player")
+            Trigger.SetActive(true);
     }
 }

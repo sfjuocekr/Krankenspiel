@@ -80,6 +80,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FlipCamera.cs" />
     <Compile Include="Assets\KrankenScripts\AR\ARCollisionTracker.cs" />
     <Compile Include="Assets\KrankenScripts\AR\ARPointers.cs" />
     <Compile Include="Assets\KrankenScripts\AR\ARPosition.cs" />
