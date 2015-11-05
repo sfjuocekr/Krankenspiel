@@ -7,17 +7,16 @@ public class ARCollisionTracker : MonoBehaviour
 
     private Dictionary<GameObject, float> _collisions = new Dictionary<GameObject, float>();
     private GameObject _lastActiveCollider = null;
-    private float _triggerTime;
     private AnalyticsEvents _analytics;
-
+    private float _triggerTime = 0f;
     private bool _justTriggered = false;
 
-    void Awake()
+    private void Awake()
     {
         _analytics = gameObject.AddComponent<AnalyticsEvents>();
     }
 
-    void OnTriggerEnter(Collider _collider)
+    private void OnTriggerEnter(Collider _collider)
     {
         if (_collider.gameObject == TrackedObjects.Contains(_collider.gameObject))
         {
@@ -38,7 +37,7 @@ public class ARCollisionTracker : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider _collider)
+    private void OnTriggerStay(Collider _collider)
     {
         if (_collider.gameObject == TrackedObjects.Contains(_collider.gameObject) && _lastActiveCollider == _collider.gameObject)
         {
@@ -50,7 +49,6 @@ public class ARCollisionTracker : MonoBehaviour
 
                 if (_collisionTime >= Mathf.RoundToInt(_collisionTime) && _collisionTime <= Mathf.RoundToInt(_collisionTime) + Time.fixedDeltaTime && !_justTriggered)
                 {
-                    //Debug.Log("OnTriggerStay => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
                     _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(_collisionTime));
 
                     _justTriggered = true;
@@ -66,7 +64,7 @@ public class ARCollisionTracker : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider _collider)
+    private void OnTriggerExit(Collider _collider)
     {
         if (_collider.gameObject == TrackedObjects.Contains(_collider.gameObject) && _lastActiveCollider == _collider.gameObject)
         {
@@ -75,7 +73,9 @@ public class ARCollisionTracker : MonoBehaviour
             if (_collisions.TryGetValue(_collider.gameObject, out _collisionTime))
             {
                 _collisionTime = Time.time - _triggerTime;
-                Debug.Log("OnTriggerExit => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
+
+                if (Debug.isDebugBuild)
+                    Debug.Log("OnTriggerExit => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
 
                 _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
                 _collisions.Remove(_collider.gameObject);
@@ -84,15 +84,17 @@ public class ARCollisionTracker : MonoBehaviour
             }
         }
     }
-
-    void Update()
+    
+    private void Update()
     {
         float _collisionTime;
 
         if (!GetComponentInChildren<MeshRenderer>().enabled && _lastActiveCollider != null && _collisions.TryGetValue(_lastActiveCollider, out _collisionTime))
         {
             _collisionTime = Time.time - _triggerTime;
-            Debug.Log("Update => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
+
+            if (Debug.isDebugBuild)
+                Debug.Log("Update => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
 
             _lastActiveCollider.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
             _collisions.Remove(_lastActiveCollider);

@@ -7,16 +7,17 @@ public class JumpTrigger : MonoBehaviour
 
     private AutomatedControls _controller;
 
-    void Awake()
+    private void Awake()
     {
         _controller = GameObject.Find("Player").GetComponent<AutomatedControls>();
     }
 
-    void OnTriggerEnter(Collider _collider)
+    private void OnTriggerEnter(Collider _collider)
     {
         if (_collider.name == "Player")
         {
-            Debug.Log("Jump!");
+            if (Debug.isDebugBuild)
+                Debug.Log("Jump!");
 
             _controller.m_jumpPower = JumpPower;
             _controller.m_Jump = true;

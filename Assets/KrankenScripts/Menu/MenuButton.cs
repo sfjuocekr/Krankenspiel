@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Analytics;
+using System.Security.Cryptography;
+using System.Text;
 
 public class MenuButton : MonoBehaviour
 {
-    public static string PlayerName = "unknown";
+    public static string PlayerName = "Anonymous";
     public static int PlayerGender = 2;
     public static int PlayerBirthYear = 1900;
 
@@ -15,8 +17,23 @@ public class MenuButton : MonoBehaviour
         Application.LoadLevel(1);
     }
 
-    private void NewPlayer(string _name = "unknown", int _gender = 2, int _birthYear = 1950)
+    private void NewPlayer(string _name, int _gender, int _birthYear)
     {
+        if (_name == "Anonymous")
+        {
+            SHA1 _SHA = SHA1.Create();
+            byte[] _bytes = ASCIIEncoding.ASCII.GetBytes((Time.time * Random.Range(-255, 255) * Random.Range(-255, 255)).ToString());
+            byte[] _hash = _SHA.ComputeHash(_bytes);
+            StringBuilder _stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < _hash.Length; i++)
+                _stringBuilder.Append(_hash[i].ToString("x2"));
+
+            PlayerName += _stringBuilder.ToString();
+
+            Debug.Log(PlayerName);
+        }
+
         Analytics.CustomEvent("Newlayer", new Dictionary<string, object>
         {
             { "player_name", _name},

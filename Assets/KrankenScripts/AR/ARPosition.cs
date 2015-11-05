@@ -8,12 +8,12 @@ public class ARPosition : MonoBehaviour
     private TrackablePointer TrackedPointer;
     private Transform _camera;
 
-    void Awake()
+    private void Awake()
     {
         _camera = GameObject.Find("ARCamera").transform;
     }
 
-    void Update()
+    private void Update()
     {
         if (TrackedPointer == null)
             ARPointers.pointers.TryGetValue(name, out TrackedPointer);
@@ -24,10 +24,23 @@ public class ARPosition : MonoBehaviour
             if (Physics.Raycast(_camera.transform.position, TrackedPointer.PointerPosition, out hit, 1000, LayerMask))
             {
                 Vector3 _position = hit.point;
-                //_position.x += 4;     //hack some translation!
+
                 transform.position = _position;
 
-                //transform.position = hit.point;
+                /* TODO: write a translation for the X-axis:
+
+                Reported    Perceived
+                -2	        0
+                0	        4
+                2	        8
+                4	        12
+                6	        16
+                8	        20
+                10	        24
+                12	        28
+                14	        32
+
+                */
             }
         }
     }

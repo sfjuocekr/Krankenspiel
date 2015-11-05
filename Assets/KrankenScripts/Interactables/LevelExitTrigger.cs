@@ -2,7 +2,7 @@
 
 public class LevelExitTrigger : MonoBehaviour
 {
-    void OnTriggerEnter(Collider _collider)
+    private void OnTriggerEnter(Collider _collider)
     {
         if (_collider.name == "Player")
         {

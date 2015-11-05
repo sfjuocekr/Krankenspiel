@@ -5,7 +5,7 @@ Confidential and Proprietary - Qualcomm Connected Experiences, Inc.
 
 Customized by: Sjoer van der Ploeg.
 Reason: I only care about the tracked position.
-        Rotation and visibility can be controlled by the object itself.
+        The rotation and visibility can be controlled by the object itself.
 ==============================================================================*/
 
 using UnityEngine;
@@ -37,16 +37,19 @@ namespace Vuforia
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
 
-        void Awake()
+        private void Awake()
         {
             mTrackableBehaviour = GetComponent<TrackableBehaviour>();
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
+        }
 
+        private void Start()
+        {
             PointerPosition = transform.position;
             PointerRotation = transform.rotation;
         }
 
-        void Update()
+        private void Update()
         {
             if (OnScreen)
             {

@@ -25,6 +25,6 @@ public class PlayerInfo : MonoBehaviour
         if (_score < 0)
             _score = 0;
 
-        _scoreText.text = Mathf.RoundToInt(_score).ToString();
+        _scoreText.text = Mathf.RoundToInt(_score * 10).ToString();
     }
 }

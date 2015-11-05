@@ -5,11 +5,11 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class MessageHandler : MonoBehaviour
 {
+    public GameObject InteractionObject;
+    public Material ActiveMaterial;
+    public GameObject TimerObject;
     public int TriggerTime = 5;
     public string Activity = "ToggleCollider";
-    public GameObject InteractionObject;
-    public GameObject TimerObject;
-    public Material ActiveMaterial;
 
     private Material InactiveMaterial;
     private Dictionary<string, Action> _activities;
@@ -37,12 +37,13 @@ public class MessageHandler : MonoBehaviour
         {
             case "ToggleCollider":
                 {
-                    InactiveMaterial = GetComponent<Renderer>().material;
+                    InactiveMaterial = InteractionObject.GetComponent<Renderer>().material;
+                    InteractionObject.GetComponent<Collider>().isTrigger = true;
                     break;
                 }
             case "ToggleActive":
                 {
-                    InactiveMaterial = InteractionObject.GetComponent<Renderer>().material;
+                    InactiveMaterial = GetComponent<Renderer>().material;
                     InteractionObject.SetActive(false);
                     break;
                 }
@@ -76,7 +77,8 @@ public class MessageHandler : MonoBehaviour
 
     private void ToggleCollider()
     {
-        Debug.Log("ToggleCollider");
+        if (Debug.isDebugBuild)
+            Debug.Log("ToggleCollider");
 
         InteractionObject.GetComponent<Collider>().isTrigger = !InteractionObject.GetComponent<Collider>().isTrigger;
 
@@ -90,21 +92,23 @@ public class MessageHandler : MonoBehaviour
 
     private void ToggleActive()
     {
-        Debug.Log("ToggleActive");
+        if (Debug.isDebugBuild)
+            Debug.Log("ToggleActive");
 
         InteractionObject.SetActive(!InteractionObject.activeInHierarchy);
 
         if (InteractionObject.activeInHierarchy)
-            GetComponent<Renderer>().material = InactiveMaterial;
-        else
             GetComponent<Renderer>().material = ActiveMaterial;
+        else
+            GetComponent<Renderer>().material = InactiveMaterial;
 
         Activated();
     }
 
     private void ToggleKinematicState()
     {
-        Debug.Log("ToggleKinematicState");
+        if (Debug.isDebugBuild)
+            Debug.Log("ToggleKinematicState");
 
         InteractionObject.GetComponent<Rigidbody>().isKinematic = !InteractionObject.GetComponent<Rigidbody>().isKinematic;
 
@@ -126,7 +130,6 @@ public class MessageHandler : MonoBehaviour
     {
         if (Time.time - _triggerCooldown > 1 && _triggerCooldown != 0f)
         {
-            Debug.Log(Time.time - _triggerCooldown);
             _triggerCooldown = 0f;
         }
     }

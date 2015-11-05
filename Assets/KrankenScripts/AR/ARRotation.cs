@@ -5,7 +5,7 @@ public class ARRotation : MonoBehaviour
 {
     private TrackablePointer TrackedPointer;
 
-    void Update()
+    private void Update()
     {
         if (TrackedPointer == null)
             ARPointers.pointers.TryGetValue(name, out TrackedPointer);

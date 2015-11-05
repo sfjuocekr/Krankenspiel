@@ -5,7 +5,7 @@ public class StopCharacterMovement : MonoBehaviour
 {
     public GameObject Target;
 
-    void OnTriggerStay(Collider _collider)
+    private void OnTriggerStay(Collider _collider)
     {
         if (Target != null && gameObject.activeSelf)
         {

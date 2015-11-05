@@ -3,14 +3,14 @@
  *
  * Customized by: Sjoer van der Ploeg.
  * ==============================================================================*/
+
 using UnityEngine;
-using System.Collections;
 using Vuforia;
 
 public class AutoFocus : MonoBehaviour
 {
     #region MONOBEHAVIOUR_METHODS
-    void Start()
+    private void Start()
     {
         VuforiaAbstractBehaviour vuforia = FindObjectOfType<VuforiaAbstractBehaviour>();
 

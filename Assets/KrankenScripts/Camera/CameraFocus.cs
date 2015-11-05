@@ -2,21 +2,20 @@
 
 public class CameraFocus : MonoBehaviour
 {
-    public GameObject FocusTarget;
-
+    private GameObject FocusTarget;
     private float _initialOffset;
 
-    void Start()
+    private void Awake()
     {
-        if (FocusTarget == null)
-        {
-            FocusTarget = GameObject.Find("Player");
-        }
+        FocusTarget = GameObject.Find("Player");
+    }
 
+    private void Start()
+    {
         _initialOffset = transform.position.y;
     }
 
-    void Update()
+    private void Update()
     {
         if (FocusTarget == null)
         {

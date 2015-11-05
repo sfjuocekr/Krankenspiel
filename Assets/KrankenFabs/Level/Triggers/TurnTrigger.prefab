@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6515812}
   - 114: {fileID: 11411036}
   - 23: {fileID: 2368474}
+  - 114: {fileID: 11447808}
   m_Layer: 0
   m_Name: TurnTrigger
   m_TagString: Untagged
@@ -83,6 +84,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e341403bd7196f14bbe4ad76362884aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11447808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31bdd9ef55f4934cac19db1b2958626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &100100000

@@ -40,6 +40,9 @@ ShaderVariantCollection:
         - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
             _NORMALMAP
           passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_SCREEN _NORMALMAP
+          passType: 4
         - keywords: DIRECTIONAL SHADOWS_OFF
           passType: 5
         - keywords: DIRECTIONAL SHADOWS_OFF _NORMALMAP
@@ -91,6 +94,9 @@ ShaderVariantCollection:
         - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
             SHADOWS_OFF
           passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_SCREEN
+          passType: 4
         - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
             VERTEXLIGHT_ON
           passType: 4
@@ -120,6 +126,8 @@ ShaderVariantCollection:
         variants:
         - keywords: 
           passType: 0
+        - keywords: FOG_EXP2
+          passType: 0
     data:
       first: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
       second:
@@ -146,6 +154,8 @@ ShaderVariantCollection:
         variants:
         - keywords: 
           passType: 0
+        - keywords: FOG_EXP2
+          passType: 0
         - keywords: SHADOWS_DEPTH
           passType: 8
     data:
@@ -154,5 +164,9 @@ ShaderVariantCollection:
         variants:
         - keywords: 
           passType: 0
+        - keywords: FOG_EXP2
+          passType: 0
         - keywords: 
+          passType: 1
+        - keywords: FOG_EXP2
           passType: 1
