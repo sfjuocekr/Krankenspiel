@@ -4,11 +4,11 @@ using UnityEngine.Analytics;
 
 public class AnalyticsEvents : MonoBehaviour
 {
-    private PlayerScore _player;
+    private PlayerInfo _player;
 
     private void Awake()
     {
-        _player = GameObject.Find("GUI").GetComponent<PlayerScore>();
+        _player = GameObject.Find("GUI").GetComponent<PlayerInfo>();
     }
 
     public void RegisterARTime(string _name, float _time, int _triggerTime, bool _failed)

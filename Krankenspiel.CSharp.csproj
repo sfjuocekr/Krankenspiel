@@ -51,6 +51,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -93,10 +96,11 @@
     <Compile Include="Assets\KrankenScripts\Interactables\StopCharacterMovement.cs" />
     <Compile Include="Assets\KrankenScripts\Light\Rotate.cs" />
     <Compile Include="Assets\KrankenScripts\Menu\MenuButton.cs" />
+    <Compile Include="Assets\KrankenScripts\Player\ActivateTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Player\AutomatedControls.cs" />
     <Compile Include="Assets\KrankenScripts\Player\JumpTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Player\NavMeshCharacterControl.cs" />
-    <Compile Include="Assets\KrankenScripts\Player\PlayerScore.cs" />
+    <Compile Include="Assets\KrankenScripts\Player\PlayerInfo.cs" />
     <Compile Include="Assets\KrankenScripts\Player\StopTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Player\TurnTrigger.cs" />
     <Compile Include="Assets\KrankenScripts\Statistics\AnalyticsEvents.cs" />

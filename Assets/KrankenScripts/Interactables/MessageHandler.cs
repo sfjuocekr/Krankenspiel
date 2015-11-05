@@ -14,8 +14,9 @@ public class MessageHandler : MonoBehaviour
     private Material InactiveMaterial;
     private Dictionary<string, Action> _activities;
     private AutomatedControls _player;
+    private float _triggerCooldown = 0f;
 
-    void Awake()
+    private void Awake()
     {
         _player = GameObject.Find("Player").GetComponent<AutomatedControls>();
 
@@ -25,26 +26,42 @@ public class MessageHandler : MonoBehaviour
             { "ToggleActive", () => ToggleActive() },                   // Toggle InteractionObject's active state
             { "ToggleKinematicState", () => ToggleKinematicState() }    // Toggle the kinematic state on the Rigidbody component of InteractionObject
         };
+    }
 
+    private void Start()
+    {
         if (TimerObject != null)
             TimerObject.SetActive(false);
 
-        if (Activity == "ToggleActive")
-            InactiveMaterial = GetComponent<Renderer>().material;
-        else
-            InactiveMaterial = InteractionObject.GetComponent<Renderer>().material;
+        switch (Activity)
+        {
+            case "ToggleCollider":
+                {
+                    InactiveMaterial = GetComponent<Renderer>().material;
+                    break;
+                }
+            case "ToggleActive":
+                {
+                    InactiveMaterial = InteractionObject.GetComponent<Renderer>().material;
+                    InteractionObject.SetActive(false);
+                    break;
+                }
+        }
     }
 
-    void CollisionTime(int _time)
+    private void CollisionTime(int _time)
     {
-        Debug.Log("CollisionTime");
+        if (_triggerCooldown != 0) return;
 
         if (_time == TriggerTime)
         {
             Action _activity;
 
             if (_activities.TryGetValue(Activity, out _activity))
+            {
+                _triggerCooldown = Time.time;
                 _activity();
+            }
         }
         else if (_time == -1)
         {
@@ -57,7 +74,7 @@ public class MessageHandler : MonoBehaviour
         }
     }
 
-    void ToggleCollider()
+    private void ToggleCollider()
     {
         Debug.Log("ToggleCollider");
 
@@ -68,28 +85,24 @@ public class MessageHandler : MonoBehaviour
         else
             InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
 
-        TimerObject.SetActive(false);
-
-        _player.m_Moving = true;
+        Activated();
     }
 
-    void ToggleActive()
+    private void ToggleActive()
     {
         Debug.Log("ToggleActive");
 
-        InteractionObject.SetActive(!InteractionObject.activeSelf);
+        InteractionObject.SetActive(!InteractionObject.activeInHierarchy);
 
-        if (InteractionObject.activeSelf)
+        if (InteractionObject.activeInHierarchy)
             GetComponent<Renderer>().material = InactiveMaterial;
         else
             GetComponent<Renderer>().material = ActiveMaterial;
 
-        TimerObject.SetActive(false);
-
-        _player.m_Moving = true;
+        Activated();
     }
 
-    void ToggleKinematicState()
+    private void ToggleKinematicState()
     {
         Debug.Log("ToggleKinematicState");
 
@@ -100,8 +113,21 @@ public class MessageHandler : MonoBehaviour
         else
             InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
 
-        TimerObject.SetActive(false);
+        Activated();
+    }
 
+    private void Activated()
+    {
+        TimerObject.SetActive(false);
         _player.m_Moving = true;
+    }
+
+    private void Update()
+    {
+        if (Time.time - _triggerCooldown > 1 && _triggerCooldown != 0f)
+        {
+            Debug.Log(Time.time - _triggerCooldown);
+            _triggerCooldown = 0f;
+        }
     }
 }

@@ -10,6 +10,8 @@ public class ARCollisionTracker : MonoBehaviour
     private float _triggerTime;
     private AnalyticsEvents _analytics;
 
+    private bool _justTriggered = false;
+
     void Awake()
     {
         _analytics = gameObject.AddComponent<AnalyticsEvents>();
@@ -46,11 +48,15 @@ public class ARCollisionTracker : MonoBehaviour
             {
                 _collisionTime = Time.time - _triggerTime;
 
-                if (_collisionTime >= Mathf.RoundToInt(_collisionTime) && _collisionTime <= Mathf.RoundToInt(_collisionTime) + Time.deltaTime)
+                if (_collisionTime >= Mathf.RoundToInt(_collisionTime) && _collisionTime <= Mathf.RoundToInt(_collisionTime) + Time.fixedDeltaTime && !_justTriggered)
                 {
-                    Debug.Log("OnTriggerStay => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
+                    //Debug.Log("OnTriggerStay => _collisionTime: " + _collisionTime + " Rounded:" + Mathf.RoundToInt(_collisionTime));
                     _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(_collisionTime));
+
+                    _justTriggered = true;
                 }
+                else
+                    _justTriggered = false;
 
                 _collisions.Remove(_collider.gameObject);
                 _collisions.Add(_collider.gameObject, _collisionTime);
