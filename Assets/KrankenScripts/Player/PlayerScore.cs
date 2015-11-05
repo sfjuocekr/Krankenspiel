@@ -14,8 +14,6 @@ public class PlayerScore : MonoBehaviour
 
     public void AddScore(float _points)
     {
-        Debug.Log(_points);
-
         _score += _points;
 
         if (_score < 0)

@@ -37,6 +37,8 @@ public class MessageHandler : MonoBehaviour
 
     void CollisionTime(int _time)
     {
+        Debug.Log("CollisionTime");
+
         if (_time == TriggerTime)
         {
             Action _activity;
@@ -57,6 +59,8 @@ public class MessageHandler : MonoBehaviour
 
     void ToggleCollider()
     {
+        Debug.Log("ToggleCollider");
+
         InteractionObject.GetComponent<Collider>().isTrigger = !InteractionObject.GetComponent<Collider>().isTrigger;
 
         if (InteractionObject.GetComponent<Collider>().isTrigger)
@@ -71,6 +75,8 @@ public class MessageHandler : MonoBehaviour
 
     void ToggleActive()
     {
+        Debug.Log("ToggleActive");
+
         InteractionObject.SetActive(!InteractionObject.activeSelf);
 
         if (InteractionObject.activeSelf)
@@ -85,6 +91,8 @@ public class MessageHandler : MonoBehaviour
 
     void ToggleKinematicState()
     {
+        Debug.Log("ToggleKinematicState");
+
         InteractionObject.GetComponent<Rigidbody>().isKinematic = !InteractionObject.GetComponent<Rigidbody>().isKinematic;
 
         if (InteractionObject.GetComponent<Rigidbody>().isKinematic)

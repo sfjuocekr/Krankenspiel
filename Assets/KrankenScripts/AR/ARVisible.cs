@@ -12,7 +12,7 @@ public class ARVisible : MonoBehaviour
         else
         {
             gameObject.GetComponent<Collider>().enabled =
-            gameObject.GetComponent<Renderer>().enabled = TrackedPointer.OnScreen;
+            gameObject.GetComponentInChildren<Renderer>().enabled = TrackedPointer.OnScreen;
         }
     }
 }
