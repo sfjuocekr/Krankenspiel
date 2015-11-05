@@ -3,8 +3,13 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    private Text _playerName;
-    private Text _scoreText;
+    [HideInInspector]
+    public Text _playerName { get; private set; }
+    [HideInInspector]
+    public Text _scoreText { get; private set; }
+    [HideInInspector]
+    public float _startTime { get; private set; }
+
     private float _score = 0.0f;
 
     private void Awake()
@@ -16,6 +21,7 @@ public class PlayerInfo : MonoBehaviour
     private void Start()
     {
         _playerName.text = MenuButton.PlayerName;
+        _startTime = Time.time;
     }
 
     public void AddScore(float _points)

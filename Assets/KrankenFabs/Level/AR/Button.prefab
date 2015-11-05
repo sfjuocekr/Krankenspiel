@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 426456}
   - 33: {fileID: 3380038}
   - 23: {fileID: 2328662}
-  - 65: {fileID: 6572236}
   - 65: {fileID: 6521414}
   - 114: {fileID: 11471016}
   m_Layer: 0
@@ -129,18 +128,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .5, y: .40057382, z: 1.00000024}
   m_Center: {x: 0, y: .100286894, z: .500000119}
---- !u!65 &6572236
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126768}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .40057382, z: 1.00000024}
-  m_Center: {x: 0, y: .100286894, z: .500000119}
 --- !u!102 &10218172
 TextMesh:
   serializedVersion: 3
@@ -173,11 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6483decebc148a49aadbba9b964462f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractionObject: {fileID: 126768}
+  ActiveMaterial: {fileID: 2100000, guid: 6d3b38939c79d2c4eaf47aea5d996b51, type: 2}
+  TimerObject: {fileID: 134982}
   TriggerTime: 5
   Activity: ToggleCollider
-  InteractionObject: {fileID: 126768}
-  TimerObject: {fileID: 134982}
-  ActiveMaterial: {fileID: 2100000, guid: 6d3b38939c79d2c4eaf47aea5d996b51, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

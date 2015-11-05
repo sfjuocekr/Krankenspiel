@@ -7,7 +7,7 @@ public class LevelExitTrigger : MonoBehaviour
         if (_collider.name == "Player")
         {
             Application.LoadLevel(0);
-            Application.UnloadLevel(1);
+            //Application.UnloadLevel(1);
         }
     }
 }
