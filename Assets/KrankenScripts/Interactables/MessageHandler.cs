@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class MessageHandler : MonoBehaviour
 {
     public int TriggerTime = 5;
     public string Activity = "ToggleCollider";
-
     public GameObject InteractionObject;
     public GameObject TimerObject;
     public Material ActiveMaterial;
 
     private Material InactiveMaterial;
-
     private Dictionary<string, Action> _activities;
+    private AutomatedControls _player;
 
     void Awake()
     {
+        _player = GameObject.Find("Player").GetComponent<AutomatedControls>();
+
         _activities = new Dictionary<string, Action>()
         {
             { "ToggleCollider", () => ToggleCollider() },               // Toggle the collider on InteractionObject
@@ -55,7 +57,7 @@ public class MessageHandler : MonoBehaviour
 
     void ToggleCollider()
     {
-        InteractionObject.GetComponent<Collider>().isTrigger = !GetComponent<Collider>().isTrigger;
+        InteractionObject.GetComponent<Collider>().isTrigger = !InteractionObject.GetComponent<Collider>().isTrigger;
 
         if (InteractionObject.GetComponent<Collider>().isTrigger)
             InteractionObject.GetComponent<Renderer>().material = InactiveMaterial;
@@ -63,6 +65,8 @@ public class MessageHandler : MonoBehaviour
             InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
 
         TimerObject.SetActive(false);
+
+        _player.m_Moving = true;
     }
 
     void ToggleActive()
@@ -75,6 +79,8 @@ public class MessageHandler : MonoBehaviour
             GetComponent<Renderer>().material = ActiveMaterial;
 
         TimerObject.SetActive(false);
+
+        _player.m_Moving = true;
     }
 
     void ToggleKinematicState()
@@ -87,5 +93,7 @@ public class MessageHandler : MonoBehaviour
             InteractionObject.GetComponent<Renderer>().material = ActiveMaterial;
 
         TimerObject.SetActive(false);
+
+        _player.m_Moving = true;
     }
 }

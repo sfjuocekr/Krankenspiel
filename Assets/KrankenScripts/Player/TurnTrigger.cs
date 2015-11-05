@@ -6,7 +6,7 @@ public class TurnTrigger : MonoBehaviour
 
     void Awake()
     {
-        _controller = GameObject.Find("Target").GetComponent<Transform>();
+        _controller = GameObject.Find("DirectionHelper").GetComponent<Transform>();
     }
 
     void OnTriggerEnter(Collider _collider)

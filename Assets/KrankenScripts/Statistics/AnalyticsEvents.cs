@@ -8,13 +8,11 @@ public class AnalyticsEvents : MonoBehaviour
 
     private void Awake()
     {
-        _player = GameObject.Find("Player").GetComponent<PlayerScore>();
+        _player = GameObject.Find("GUI").GetComponent<PlayerScore>();
     }
 
     public void RegisterARTime(string _name, float _time, int _triggerTime, bool _failed)
     {
-        Debug.Log(_failed);
-
         Analytics.CustomEvent("AR Interaction", new Dictionary<string, object>
                 {
                     {"AR Object", _name},

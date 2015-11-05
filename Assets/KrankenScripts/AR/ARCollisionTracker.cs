@@ -62,9 +62,13 @@ public class ARCollisionTracker : MonoBehaviour
 
             if (_collisions.TryGetValue(_collider.gameObject, out _collisionTime))
             {
-                _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
-                _collisions.Remove(_collider.gameObject);
-                _analytics.RegisterARTime(_collider.name, _collisionTime, _collider.gameObject.GetComponent<MessageHandler>().TriggerTime, (_collider.gameObject.GetComponent<MessageHandler>().TriggerTime >= _collisionTime));
+                if (_collisionTime >= Time.deltaTime)
+                {
+                    Debug.Log("OnTriggerExit: " + _collisionTime + ", trigger was: " + _triggerTime);
+                    _collider.gameObject.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
+                    _collisions.Remove(_collider.gameObject);
+                    _analytics.RegisterARTime(_collider.name, _collisionTime, _collider.gameObject.GetComponent<MessageHandler>().TriggerTime, (_collider.gameObject.GetComponent<MessageHandler>().TriggerTime >= _collisionTime));
+                }
             }
         }
     }
@@ -75,6 +79,7 @@ public class ARCollisionTracker : MonoBehaviour
 
         if (!GetComponent<MeshRenderer>().enabled && _lastActiveCollider != null && _collisions.TryGetValue(_lastActiveCollider, out _collisionTime))
         {
+            Debug.Log("Update: " + _collisionTime + ", trigger was: " + _triggerTime);
             _lastActiveCollider.SendMessage("CollisionTime", Mathf.RoundToInt(-1));
             _collisions.Remove(_lastActiveCollider);
             _analytics.RegisterARTime(_lastActiveCollider.name, _collisionTime, _lastActiveCollider.GetComponent<MessageHandler>().TriggerTime, (_lastActiveCollider.GetComponent<MessageHandler>().TriggerTime >= _collisionTime));
